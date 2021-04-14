@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Oa-oi-Zv2">
-                                <rect key="frame" x="0.0" y="727" width="390" height="83"/>
+                                <rect key="frame" x="0.0" y="761" width="390" height="49"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <tabBarItem title="Каталог" image="magnifyingglass" catalog="system" id="Z97-LU-0C7"/>
                                     <tabBarItem title="Избранное" image="heart" catalog="system" id="B4A-SH-ytI"/>
                                     <tabBarItem title="Корзина" image="cart" catalog="system" id="Nsa-Ei-Dzh"/>
-                                    <tabBarItem title="Ещё" image="slider.horizontal.3" catalog="system" id="mXj-lt-ltL"/>
+                                    <tabBarItem title="Профиль " image="person" catalog="system" id="mXj-lt-ltL"/>
                                 </items>
                             </tabBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZYD-T4-YTe">
@@ -60,27 +60,16 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3b-qG-zJJ">
-                                        <rect key="frame" x="20" y="0.0" width="27.333333333333329" height="55"/>
+                                        <rect key="frame" x="20" y="0.0" width="27" height="55"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="line.horizontal.3" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                                         </state>
                                     </button>
-                                    <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" placeholder="Поиск товаров            " translatesAutoresizingMaskIntoConstraints="NO" id="WDJ-Uw-Uy5">
-                                        <rect key="frame" x="67" y="0.0" width="209" height="55"/>
+                                    <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" placeholder="Поиск товаров                            " translatesAutoresizingMaskIntoConstraints="NO" id="WDJ-Uw-Uy5">
+                                        <rect key="frame" x="67" y="0.0" width="303" height="55"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvN-vR-V65">
-                                        <rect key="frame" x="296.33333333333331" y="0.0" width="25.333333333333314" height="55"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-ge-tCS">
-                                        <rect key="frame" x="341.66666666666669" y="0.0" width="28.333333333333314" height="55"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="cart" catalog="system" symbolScale="large"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -109,7 +98,10 @@
                                             <constraint firstAttribute="height" constant="24" id="Aq2-VE-OsM"/>
                                             <constraint firstAttribute="width" constant="24" id="JKu-ve-9Hl"/>
                                         </constraints>
-                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="chevron.left" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,7 +134,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tDo-jU-nXt">
-                                <rect key="frame" x="0.0" y="297" width="390" height="430"/>
+                                <rect key="frame" x="0.0" y="297" width="390" height="464"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="20" sectionInsetReference="layoutMargins" id="IAz-9Z-2ck">
                                     <size key="itemSize" width="140" height="236"/>
@@ -209,7 +201,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tDo-jU-nXt" firstAttribute="top" secondItem="GrA-sb-lPl" secondAttribute="bottom" id="0N5-Is-UvA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZYD-T4-YTe" secondAttribute="trailing" id="5bg-XJ-mQ9"/>
@@ -238,6 +230,183 @@
             </objects>
             <point key="canvasLocation" x="783.07692307692309" y="69.66824644549763"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="r5c-ts-REu">
+            <objects>
+                <viewController id="KKj-aj-jYN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lvg-yG-S16">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xa3-BD-w1d">
+                                <rect key="frame" x="0.0" y="44" width="390" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u18-Nf-KGy">
+                                        <rect key="frame" x="20" y="0.0" width="27" height="55"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="line.horizontal.3" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                        </state>
+                                    </button>
+                                    <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" placeholder="Поиск товаров                            " translatesAutoresizingMaskIntoConstraints="NO" id="krk-Nr-biW">
+                                        <rect key="frame" x="67" y="0.0" width="303" height="55"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="dTr-4D-L9E"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cWm-wu-WN1">
+                                <rect key="frame" x="0.0" y="99" width="390" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIc-MN-Kb4">
+                                        <rect key="frame" x="20" y="7" width="48" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Новинки">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WC9-aQ-xW6">
+                                        <rect key="frame" x="114" y="7" width="95" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Скоро в продаже">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpN-k7-4jZ">
+                                        <rect key="frame" x="255" y="7" width="115" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Акции и распродажи">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <edgeInsets key="layoutMargins" top="7" left="20" bottom="7" right="20"/>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-st-lKh">
+                                <rect key="frame" x="0.0" y="138.99999999999997" width="390" height="496.33333333333326"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDD-Zk-thg">
+                                <rect key="frame" x="20" y="167" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="XEh-32-eQC"/>
+                                    <constraint firstAttribute="width" constant="24" id="ZrZ-dt-foB"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-wc-VOx">
+                                <rect key="frame" x="330" y="159" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="9eN-0K-z53"/>
+                                    <constraint firstAttribute="height" constant="40" id="MVO-Tg-Tbs"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артикул 1483-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8D-L2-1XH">
+                                <rect key="frame" x="15" y="650.33333333333337" width="360" height="28.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Savage / Платье японского стиля" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmI-V8-Qb0">
+                                <rect key="frame" x="15" y="684" width="360" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.63137254901960782" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.00 BYN / 1 шт." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erx-wd-zXv">
+                                <rect key="frame" x="15" y="726" width="360" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqS-KG-Y0J">
+                                <rect key="frame" x="2015" y="763" width="119" height="56"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.50196078430000002" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="v69-2d-a7E"/>
+                                </constraints>
+                                <state key="normal" title="Выбрать размер">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxG-qq-cTh">
+                                <rect key="frame" x="15" y="773" width="360" height="56"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.50196078430000002" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="50W-Sd-rqv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Выбрать рамер">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="ruler" catalog="system" symbolScale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3GJ-ay-nGU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3GJ-ay-nGU" firstAttribute="trailing" secondItem="nxk-st-lKh" secondAttribute="trailing" id="1WT-rV-yuI"/>
+                            <constraint firstItem="3GJ-ay-nGU" firstAttribute="trailing" secondItem="V8D-L2-1XH" secondAttribute="trailing" constant="15" id="1YJ-iv-AEO"/>
+                            <constraint firstItem="erx-wd-zXv" firstAttribute="trailing" secondItem="V8D-L2-1XH" secondAttribute="trailing" id="48C-Rk-4Z9"/>
+                            <constraint firstItem="YmI-V8-Qb0" firstAttribute="trailing" secondItem="V8D-L2-1XH" secondAttribute="trailing" id="4VN-dE-oSN"/>
+                            <constraint firstItem="zxG-qq-cTh" firstAttribute="top" secondItem="erx-wd-zXv" secondAttribute="bottom" constant="30" id="5ly-KH-YGI"/>
+                            <constraint firstItem="erx-wd-zXv" firstAttribute="top" secondItem="YmI-V8-Qb0" secondAttribute="bottom" constant="25" id="8Eb-77-JS8"/>
+                            <constraint firstItem="cWm-wu-WN1" firstAttribute="leading" secondItem="Lvg-yG-S16" secondAttribute="leading" id="8KP-XQ-NmD"/>
+                            <constraint firstItem="YmI-V8-Qb0" firstAttribute="leading" secondItem="V8D-L2-1XH" secondAttribute="leading" id="EzL-Y5-mUK"/>
+                            <constraint firstItem="erx-wd-zXv" firstAttribute="leading" secondItem="V8D-L2-1XH" secondAttribute="leading" id="Gub-kM-WvJ"/>
+                            <constraint firstItem="wqS-KG-Y0J" firstAttribute="leading" secondItem="3GJ-ay-nGU" secondAttribute="leading" constant="2015" id="Iet-yY-nhb"/>
+                            <constraint firstItem="zxG-qq-cTh" firstAttribute="leading" secondItem="V8D-L2-1XH" secondAttribute="leading" id="IuM-JL-6ZC"/>
+                            <constraint firstItem="V8D-L2-1XH" firstAttribute="leading" secondItem="3GJ-ay-nGU" secondAttribute="leading" constant="15" id="LQ3-I2-cnE"/>
+                            <constraint firstItem="wqS-KG-Y0J" firstAttribute="top" secondItem="erx-wd-zXv" secondAttribute="bottom" constant="20" id="MHB-i1-xv3"/>
+                            <constraint firstItem="xa3-BD-w1d" firstAttribute="top" secondItem="3GJ-ay-nGU" secondAttribute="top" id="MWz-kg-3Sd"/>
+                            <constraint firstAttribute="bottom" secondItem="zxG-qq-cTh" secondAttribute="bottom" constant="15" id="Thf-LF-Zhp"/>
+                            <constraint firstItem="cWm-wu-WN1" firstAttribute="top" secondItem="xa3-BD-w1d" secondAttribute="bottom" id="W3z-jU-fCk"/>
+                            <constraint firstItem="YmI-V8-Qb0" firstAttribute="top" secondItem="V8D-L2-1XH" secondAttribute="bottom" constant="5" id="bAf-Me-ahd"/>
+                            <constraint firstItem="nxk-st-lKh" firstAttribute="leading" secondItem="3GJ-ay-nGU" secondAttribute="leading" id="bQE-om-6G1"/>
+                            <constraint firstItem="zxG-qq-cTh" firstAttribute="trailing" secondItem="V8D-L2-1XH" secondAttribute="trailing" id="ctX-pe-292"/>
+                            <constraint firstItem="3GJ-ay-nGU" firstAttribute="trailing" secondItem="wqS-KG-Y0J" secondAttribute="trailing" constant="20" id="e0G-07-Xyx"/>
+                            <constraint firstAttribute="trailing" secondItem="xa3-BD-w1d" secondAttribute="trailing" id="fnP-Dk-WBo"/>
+                            <constraint firstItem="xa3-BD-w1d" firstAttribute="leading" secondItem="3GJ-ay-nGU" secondAttribute="leading" id="gQf-gM-6zu"/>
+                            <constraint firstItem="e4t-wc-VOx" firstAttribute="top" secondItem="cWm-wu-WN1" secondAttribute="bottom" constant="20" id="hk3-Rq-gB9"/>
+                            <constraint firstItem="nxk-st-lKh" firstAttribute="top" secondItem="cWm-wu-WN1" secondAttribute="bottom" id="sYF-b4-L36"/>
+                            <constraint firstItem="3GJ-ay-nGU" firstAttribute="trailing" secondItem="cWm-wu-WN1" secondAttribute="trailing" id="ttI-3g-uLd"/>
+                            <constraint firstItem="HDD-Zk-thg" firstAttribute="leading" secondItem="3GJ-ay-nGU" secondAttribute="leading" constant="20" id="ver-Md-7tG"/>
+                            <constraint firstItem="V8D-L2-1XH" firstAttribute="top" secondItem="nxk-st-lKh" secondAttribute="bottom" constant="15" id="wB3-BX-jTa"/>
+                            <constraint firstItem="3GJ-ay-nGU" firstAttribute="trailing" secondItem="e4t-wc-VOx" secondAttribute="trailing" constant="20" id="wFF-0t-nd6"/>
+                            <constraint firstItem="HDD-Zk-thg" firstAttribute="centerY" secondItem="e4t-wc-VOx" secondAttribute="centerY" id="yVe-mm-k4R"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GfR-Zl-wwj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="018-bH-7QP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701.5384615384614" y="69.66824644549763"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="0y5-fv-Efd">
             <objects>
@@ -264,7 +433,8 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="ruler" catalog="system" width="128" height="57"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
