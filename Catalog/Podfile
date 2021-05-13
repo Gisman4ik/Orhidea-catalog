@@ -1,0 +1,8 @@
+target 'Catalog' do
+  use_frameworks!
+
+  pod 'RealmSwift'	
+  pod 'Moya'
+  pod 'Moya-ObjectMapper'
+  pod 'SDWebImage'
+end
