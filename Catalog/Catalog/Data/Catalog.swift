@@ -32,7 +32,7 @@ class Product: Mappable {
     }
     func mapping(map: Map) {
         title       <- map["title"]
-        price       <- map["sku"]
+        price       <- map["price"]
         text        <- map["text"]
         quantity    <- map["quantity"]
         imageURLString <- map["editions.0.img"]

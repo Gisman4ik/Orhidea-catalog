@@ -13,7 +13,7 @@ extension NetworkService: TargetType {
     var path: String {
         switch self {
         case .getCatalogData:
-            return "92ee7e322065818c1198"
+            return "a037d16e0def2d076a91"
         }
     }
     var method: Moya.Method {

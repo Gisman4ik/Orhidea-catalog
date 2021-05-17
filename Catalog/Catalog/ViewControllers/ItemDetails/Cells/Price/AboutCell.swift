@@ -1,13 +1,13 @@
 //
-//  ArticlePrice.swift
+//  AboutCell.swift
 //  Catalog
 //
-//  Created by Artur Radziukhin on 1.05.21.
+//  Created by Artur Radziukhin on 15.05.21.
 //
 
 import UIKit
 
-class ArticlePrice: UITableViewCell {
+class AboutCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

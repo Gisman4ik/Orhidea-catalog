@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,34 +18,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-Hp-bA5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="222.5"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-uL-Umh">
-                        <rect key="frame" x="3" y="224" width="317" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артикул" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-uL-Umh">
+                        <rect key="frame" x="10" y="232.5" width="300" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-il-xLC">
-                        <rect key="frame" x="3" y="250" width="317" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размеры 45-55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-il-xLC">
+                        <rect key="frame" x="10" y="257" width="300" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-1o-E5B">
-                        <rect key="frame" x="3" y="276" width="317" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет в наличии" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-1o-E5B">
+                        <rect key="frame" x="10" y="279" width="300" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ejX-Hp-bA5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1pJ-y6-cp4"/>
+                    <constraint firstAttribute="trailing" secondItem="uHD-uL-Umh" secondAttribute="trailing" constant="10" id="5mq-P1-fdF"/>
                     <constraint firstItem="B2U-1o-E5B" firstAttribute="top" secondItem="Bpc-il-xLC" secondAttribute="bottom" constant="5" id="A7p-nr-Q4U"/>
                     <constraint firstItem="B2U-1o-E5B" firstAttribute="trailing" secondItem="uHD-uL-Umh" secondAttribute="trailing" id="Ilq-KL-3vj"/>
-                    <constraint firstItem="uHD-uL-Umh" firstAttribute="trailing" secondItem="ejX-Hp-bA5" secondAttribute="trailing" id="VeT-sx-FT9"/>
                     <constraint firstAttribute="bottomMargin" secondItem="B2U-1o-E5B" secondAttribute="bottom" constant="5" id="Vtk-se-4sU"/>
-                    <constraint firstItem="uHD-uL-Umh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="ZdG-5k-xse"/>
+                    <constraint firstItem="uHD-uL-Umh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ZdG-5k-xse"/>
                     <constraint firstItem="Bpc-il-xLC" firstAttribute="leading" secondItem="uHD-uL-Umh" secondAttribute="leading" id="gdd-k1-Z9r"/>
                     <constraint firstAttribute="trailing" secondItem="ejX-Hp-bA5" secondAttribute="trailing" id="hhv-gy-tAt"/>
                     <constraint firstItem="B2U-1o-E5B" firstAttribute="leading" secondItem="uHD-uL-Umh" secondAttribute="leading" id="kcg-qs-pLm"/>
@@ -57,11 +58,16 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="productImage" destination="ejX-Hp-bA5" id="UjN-U1-rEk"/>
-                <outlet property="productPrice" destination="B2U-1o-E5B" id="OA7-0V-YrX"/>
+                <outlet property="productQuantity" destination="B2U-1o-E5B" id="OA7-0V-YrX"/>
                 <outlet property="productSizeChart" destination="Bpc-il-xLC" id="y1C-me-3VR"/>
                 <outlet property="productTitle" destination="uHD-uL-Umh" id="jGw-ab-VzG"/>
             </connections>
-            <point key="canvasLocation" x="175.36231884057972" y="96.763392857142847"/>
+            <point key="canvasLocation" x="-262.31884057971018" y="86.71875"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
