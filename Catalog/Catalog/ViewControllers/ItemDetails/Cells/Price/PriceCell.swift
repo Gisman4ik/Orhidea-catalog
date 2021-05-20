@@ -17,8 +17,13 @@ class PriceCell: UITableViewCell {
     }
 
     func setPrice(price: String?) {
-        guard let txtPrice = price, let dblPrice = Double(txtPrice) else {return}
-        priceLabel.text = "\(String(format: "%g", dblPrice)) BYN / 1 шт."
+        if let txtPrice = price, let dblPrice = Double(txtPrice) {
+            priceLabel.text = "\(String(format: "%g", dblPrice)) BYN / 1 шт."
+        }
+        else {
+            priceLabel.isHidden = true
+        }
+        
     }
     
 }

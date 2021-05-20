@@ -18,22 +18,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-Hp-bA5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="222.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="217.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артикул" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-uL-Umh">
-                        <rect key="frame" x="10" y="232.5" width="300" height="19.5"/>
+                        <rect key="frame" x="10" y="227.5" width="300" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размеры 45-55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-il-xLC">
-                        <rect key="frame" x="10" y="257" width="300" height="17"/>
+                        <rect key="frame" x="10" y="252" width="300" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Qcb-Rt-0a4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет в наличии" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-1o-E5B">
-                        <rect key="frame" x="10" y="279" width="300" height="18"/>
+                        <rect key="frame" x="10" y="277" width="300" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" systemColor="systemRedColor"/>
                         <nil key="highlightedColor"/>
@@ -46,6 +49,7 @@
                     <constraint firstItem="B2U-1o-E5B" firstAttribute="trailing" secondItem="uHD-uL-Umh" secondAttribute="trailing" id="Ilq-KL-3vj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="B2U-1o-E5B" secondAttribute="bottom" constant="5" id="Vtk-se-4sU"/>
                     <constraint firstItem="uHD-uL-Umh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ZdG-5k-xse"/>
+                    <constraint firstItem="B2U-1o-E5B" firstAttribute="height" secondItem="Bpc-il-xLC" secondAttribute="height" id="cAp-Gw-yzL"/>
                     <constraint firstItem="Bpc-il-xLC" firstAttribute="leading" secondItem="uHD-uL-Umh" secondAttribute="leading" id="gdd-k1-Z9r"/>
                     <constraint firstAttribute="trailing" secondItem="ejX-Hp-bA5" secondAttribute="trailing" id="hhv-gy-tAt"/>
                     <constraint firstItem="B2U-1o-E5B" firstAttribute="leading" secondItem="uHD-uL-Umh" secondAttribute="leading" id="kcg-qs-pLm"/>

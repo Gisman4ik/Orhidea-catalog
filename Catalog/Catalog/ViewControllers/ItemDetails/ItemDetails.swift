@@ -1,11 +1,13 @@
 import UIKit
-
+import ImageSlideshow
 class ItemDetails: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var tableModel = DetailsTableModel.allCases
     var currentProduct: Product?
+    var slideshow: ImageSlideshow?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,18 +15,30 @@ class ItemDetails: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    func setGestureFullSlideShow() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
+        guard let slideShow = slideshow else {return}
+        slideShow.addGestureRecognizer(gestureRecognizer)
+    }
+    @objc func didTap() {
+        guard let slideShow = slideshow else {return}
+       let fullScreenController = slideShow.presentFullScreenController(from: self)
+        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator()
+    }
     private func registerCell() {
         let imageCell = UINib(nibName: String(describing: ItemImage.self), bundle: nil)
         let articleCell = UINib(nibName: String(describing: ArticleCell.self), bundle: nil)
         let priceCell = UINib(nibName: String(describing: PriceCell.self), bundle: nil)
+        let colorCell = UINib(nibName: String(describing: ColorCell.self), bundle: nil)
         let sizeChartCell = UINib(nibName: String(describing: SizeChartCell.self), bundle: nil)
         let addToCartCell = UINib(nibName: String(describing: AddToCartCell.self), bundle: nil)
         let aboutCell = UINib(nibName: String(describing: AboutCell.self), bundle: nil)
-
+        
         
         tableView.register(imageCell, forCellReuseIdentifier: String(describing: ItemImage.self))
         tableView.register(articleCell, forCellReuseIdentifier: String(describing: ArticleCell.self))
         tableView.register(priceCell, forCellReuseIdentifier: String(describing: PriceCell.self))
+        tableView.register(colorCell, forCellReuseIdentifier: String(describing: ColorCell.self))
         tableView.register(sizeChartCell, forCellReuseIdentifier: String(describing: SizeChartCell.self))
         tableView.register(addToCartCell, forCellReuseIdentifier: String(describing: AddToCartCell.self))
         tableView.register(aboutCell, forCellReuseIdentifier: String(describing: AboutCell.self))
@@ -41,7 +55,9 @@ extension ItemDetails: UITableViewDataSource {
         case .itemImage:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemImage.self), for: indexPath)
             guard let imageCell = cell as? ItemImage else {return cell}
-            imageCell.setImage(urlString: currentProduct?.imageURLString)
+            imageCell.slideshowDelegate = self
+            imageCell.goBackDelegate = self
+            imageCell.setImages(gallery: currentProduct?.gallery)
             return imageCell
         case .article:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleCell.self), for: indexPath)
@@ -53,12 +69,16 @@ extension ItemDetails: UITableViewDataSource {
             guard let priceCell = cell as? PriceCell else {return cell}
             priceCell.setPrice(price: currentProduct?.price)
             return priceCell
+        case .color:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ColorCell.self), for: indexPath)
+            guard let colorCell = cell as? ColorCell else {return cell}
+            colorCell.setColor(color: currentProduct?.color)
+            return colorCell
         case .sizeChart:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SizeChartCell.self), for: indexPath)
             guard let sizeChartCell = cell as? SizeChartCell else {return cell}
             sizeChartCell.setSizeChart(currentProduct?.sizeChart)
-            guard let txtPrice = currentProduct?.price, let price = Double(txtPrice) else {return cell}
-            sizeChartCell.price = price
+            sizeChartCell.price = currentProduct?.price
             sizeChartCell.calcTotalPrice(amount: 1)
             return sizeChartCell
         case .addToCart:
@@ -70,5 +90,17 @@ extension ItemDetails: UITableViewDataSource {
             guard let aboutCell = cell as? AboutCell else {return cell}
             return aboutCell
         }
+    }
+}
+
+extension ItemDetails: SlideshowDelegate {
+    func sendSlideShow(_ slideshow: ImageSlideshow){
+        self.slideshow = slideshow
+        self.setGestureFullSlideShow() 
+    }
+}
+extension ItemDetails: GoBackDelegate {
+    func popVC() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

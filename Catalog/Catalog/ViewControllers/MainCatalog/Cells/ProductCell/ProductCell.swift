@@ -13,12 +13,13 @@ class ProductCell: UICollectionViewCell {
         
     }
     
-    func setupProductInfo(title: String, quantity: String, sizeChart: String, imageURLString: String) {
+    func setupProductInfo(title: String, quantity: String, sizeChart: String?, imageURLString: String) {
         productTitle.text = title
-        productSizeChart.text = sizeChart
+        if let sizes = sizeChart {
+            productSizeChart.text = sizes
+        }
         if let dblQuantity = Double(quantity) {
-            dblQuantity <= 0 ? (productQuantity.textColor = .red) : (productQuantity.textColor = .clear)
-            
+            dblQuantity <= 0 ? (productQuantity.text = "Нет в наличии") : (productQuantity.text = "")
         }
         else { productQuantity.text = "0" }
         let screen = UIScreen.main.bounds

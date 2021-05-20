@@ -1,5 +1,11 @@
 PODS:
   - Alamofire (5.4.3)
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/SDWebImage (1.9.2):
+    - ImageSlideshow/Core
+    - SDWebImage (>= 3.7)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya-ObjectMapper (2.9):
@@ -20,6 +26,8 @@ PODS:
   - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
+  - ImageSlideshow
+  - ImageSlideshow/SDWebImage
   - Moya
   - Moya-ObjectMapper
   - RealmSwift
@@ -28,6 +36,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - ImageSlideshow
     - Moya
     - Moya-ObjectMapper
     - ObjectMapper
@@ -37,6 +46,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
@@ -44,6 +54,6 @@ SPEC CHECKSUMS:
   RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: bc881c16aff090d95fde29785c3d869a551edd88
+PODFILE CHECKSUM: 63d2ba4d8d8c651f6425fa490099c0d0ab79bd89
 
 COCOAPODS: 1.10.1

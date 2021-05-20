@@ -13,8 +13,14 @@ class SizeChartCell: UITableViewCell {
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var amountField: UITextField!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var sizesStackView: UIStackView!
+    @IBOutlet weak var totalStackView: UIStackView!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
-    var price = 0.0
+    var price: String?
+    var maxSize = 0
+    var minSize = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,16 +28,33 @@ class SizeChartCell: UITableViewCell {
     }
     
     func setSizeChart(_ sizeChart: String?) {
-        guard let sizes = sizeChart else {return}
-        sizeLabel.text = sizes
+        guard let sizesTxt = sizeChart, sizesTxt != "" else {
+            sizesStackView.isHidden = true
+            totalStackView.isHidden = true
+            return
+        }
+        let range = sizesTxt.range(of: "[0-9][0-9]-[0-9][0-9]", options: .regularExpression)
+        guard let rangeOfSizes = range else {return}
+        let sizesArr = sizesTxt[rangeOfSizes].split(separator: "-")
+        guard let intMinSize = Int(sizesArr[0]), let intMaxSize = Int(sizesArr[1]) else {return}
+        minSize = intMinSize
+        maxSize = intMaxSize
+        let sizeChartAttrStr = NSMutableAttributedString(string: "Размеры: ", attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
+        sizeChartAttrStr.append(NSAttributedString(string: "\(minSize)-\(maxSize)"))
+      sizeLabel.attributedText = sizeChartAttrStr
     }
     
     func calcTotalPrice(amount: Int) {
-        let total = price * Double(amount) * 6.0
+        guard let txtPrice = price, let dblPrice = Double(txtPrice) else {
+            totalStackView.isHidden = true
+            return
+        }
+        let amountInLineup = ((maxSize - minSize) / 2) + 1
+        let total = dblPrice * Double(amount) * Double(amountInLineup)
         totalPriceLabel.text = "\(String(format: "%g", total)) BYN"
     }
     
-    @IBAction func minusItemAction(_ sender: Any) {
+    @IBAction func minusItemAction(_ sender: UIButton) {
         guard let amountTxtValue = amountField.text, var amountValue = Int(amountTxtValue) else {return}
         if amountValue > 1 {
             amountValue -= 1
@@ -39,12 +62,25 @@ class SizeChartCell: UITableViewCell {
         amountField.text = "\(amountValue)"
         calcTotalPrice(amount: amountValue)
     }
+    
     @IBAction func plusItemAction(_ sender: Any) {
         guard let amountTxtValue = amountField.text, var amountValue = Int(amountTxtValue) else {return}
         amountValue += 1
         amountField.text = "\(amountValue)"
         calcTotalPrice(amount: amountValue)
     }
-    
-    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let biggerMinusButtonFrame = minusButton.frame.insetBy(dx: -10, dy: -10)
+        if biggerMinusButtonFrame.contains(point) {
+            return minusButton
+        }
+        let biggerPlusButtonFrame = plusButton.frame.insetBy(dx: -10, dy: -10)
+        if biggerPlusButtonFrame.contains(point) {
+            return plusButton
+        }
+        return super.hitTest(point, with: event)
+    }
+       
+
 }
+

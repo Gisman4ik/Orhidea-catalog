@@ -21,12 +21,13 @@ class Product: Mappable {
     var text = ""
     var quantity = ""
     var color = ""
-    var price = ""
-    var sizeChart = ""
+    var price: String?
+    var sizeChart: String?
     var sort = ""
     var url = ""
     var imageURLString: String?
-
+    var gallery = ""
+    
     required init?(map: Map) {
         mapping(map: map)
     }
@@ -42,5 +43,35 @@ class Product: Mappable {
         uid         <- map["uid"]
         sku         <- map["sku"]
         sort        <- map["sort"]
+        gallery     <- map["gallery"]
     }
 }
+
+
+
+class Gallery: Mappable {
+    var images = ""
+    
+    required init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    func mapping(map: Map) {
+        images <- map["img\\"]
+    }
+    
+    
+}
+
+class Images: Mappable {
+    
+    var img = ""
+    required init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    func mapping(map: Map) {
+        img <- map[""]
+    }
+}
+    
