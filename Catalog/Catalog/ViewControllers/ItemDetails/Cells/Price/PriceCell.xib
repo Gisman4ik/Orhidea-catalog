@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="23  BYN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDr-b6-Ldp">
-                        <rect key="frame" x="20" y="0.0" width="280" height="46"/>
+                        <rect key="frame" x="20" y="0.0" width="280" height="37"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -25,7 +25,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="ZDr-b6-Ldp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4hQ-nk-k9C"/>
-                    <constraint firstAttribute="bottom" secondItem="ZDr-b6-Ldp" secondAttribute="bottom" id="NoE-vY-5kt"/>
+                    <constraint firstAttribute="bottom" secondItem="ZDr-b6-Ldp" secondAttribute="bottom" constant="9" id="NoE-vY-5kt"/>
                     <constraint firstItem="ZDr-b6-Ldp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="USN-0t-0Wb"/>
                     <constraint firstAttribute="trailing" secondItem="ZDr-b6-Ldp" secondAttribute="trailing" constant="20" id="yFx-fo-7oH"/>
                 </constraints>

@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-74-Q2r">
-                        <rect key="frame" x="20" y="0.0" width="282" height="68.5"/>
+                        <rect key="frame" x="20" y="0.0" width="282" height="59.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="48 - 56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUK-1Q-gtN">
-                                <rect key="frame" x="0.0" y="25.5" width="127" height="18"/>
+                                <rect key="frame" x="0.0" y="21" width="127" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jax-XV-JVe">
-                                <rect key="frame" x="147" y="19.5" width="30" height="30"/>
+                                <rect key="frame" x="147" y="15" width="30" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2te-fb-RGB"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pst-tq-3a1">
-                                <rect key="frame" x="197" y="17" width="35" height="35"/>
+                                <rect key="frame" x="197" y="12.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pst-tq-3a1" secondAttribute="height" multiplier="1:1" id="IvW-Fl-2eu"/>
                                     <constraint firstAttribute="height" constant="35" id="ntk-D7-Bbu"/>
@@ -58,7 +58,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hP-WF-yfa">
-                                <rect key="frame" x="252" y="21" width="30" height="26.5"/>
+                                <rect key="frame" x="252" y="16.5" width="30" height="26.5"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
@@ -81,7 +81,7 @@
                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wQn-H2-be4">
-                        <rect key="frame" x="20" y="73.5" width="282" height="20.5"/>
+                        <rect key="frame" x="20" y="64.5" width="282" height="20.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Итого:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEt-Qs-mRa">
                                 <rect key="frame" x="0.0" y="0.0" width="251.5" height="20.5"/>
@@ -101,7 +101,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="QIz-74-Q2r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WO-x9-3Lm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="wQn-H2-be4" secondAttribute="bottom" id="CXd-Ng-d4z"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wQn-H2-be4" secondAttribute="bottom" constant="9" id="CXd-Ng-d4z"/>
                     <constraint firstItem="wQn-H2-be4" firstAttribute="trailing" secondItem="QIz-74-Q2r" secondAttribute="trailing" id="UdJ-BU-Zvz"/>
                     <constraint firstItem="wQn-H2-be4" firstAttribute="leading" secondItem="QIz-74-Q2r" secondAttribute="leading" id="Usb-bz-1jC"/>
                     <constraint firstItem="QIz-74-Q2r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dfL-8V-KgN"/>

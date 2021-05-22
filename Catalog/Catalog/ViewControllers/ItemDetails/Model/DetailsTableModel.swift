@@ -8,4 +8,28 @@ enum DetailsTableModel: CaseIterable {
     case sizeChart
     case addToCart
     case about
+    
+    func getAvailableCells(data: Product?) -> [DetailsTableModel] {
+        
+        var cellsArray: [DetailsTableModel] = []
+        
+        if data?.imageURLString != nil {
+            cellsArray.append(Self.itemImage)
+        }
+        if data?.title != nil {
+            cellsArray.append(Self.article)
+        }
+        if data?.price != nil {
+            cellsArray.append(Self.price)
+        }
+        if data?.color != nil {
+            cellsArray.append(Self.color)
+        }
+        if data?.sizeChart != nil {
+            cellsArray.append(Self.sizeChart)
+        }
+        cellsArray.append(contentsOf: [Self.addToCart,Self.about])
+        
+        return cellsArray
+    }
 }

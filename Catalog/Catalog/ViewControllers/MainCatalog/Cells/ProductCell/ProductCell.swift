@@ -1,5 +1,6 @@
 import UIKit
 import SDWebImage
+import ImageSlideshow
 
 class ProductCell: UICollectionViewCell {
     
@@ -21,12 +22,15 @@ class ProductCell: UICollectionViewCell {
         if let dblQuantity = Double(quantity) {
             dblQuantity <= 0 ? (productQuantity.text = "Нет в наличии") : (productQuantity.text = "")
         }
-        else { productQuantity.text = "0" }
+        else { productQuantity.text = "Нет в наличии" }
         let screen = UIScreen.main.bounds
         let imgWidth = (screen.width / 2) - 1
         let placeholderImage = UIImage(named: "dressSample.jpeg")?.resizeImageWithNewWidthPreservingAspectRatio(targetWidth: imgWidth)
-        productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage) { img, error, imgCache, URL in
-            self.productImage.image = self.productImage.image?.resizeImageWithNewWidthPreservingAspectRatio(targetWidth: imgWidth)
+        productImage.image = placeholderImage
+        productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage, options: [.avoidAutoSetImage]) { img, error, imgCache, URL in
+            guard let img = img else {return}
+            let resizedImg = img.resizeImageWithNewWidthPreservingAspectRatio(targetWidth: imgWidth)
+            self.productImage.image = resizedImg
         }
     }
 }

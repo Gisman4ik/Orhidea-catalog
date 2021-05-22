@@ -20,7 +20,7 @@ class Product: Mappable {
     var sku = ""
     var text = ""
     var quantity = ""
-    var color = ""
+    var color: String?
     var price: String?
     var sizeChart: String?
     var sort = ""

@@ -4,8 +4,8 @@ class ItemDetails: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tableModel = DetailsTableModel.allCases
     var currentProduct: Product?
+    var tableModel: [DetailsTableModel] = []
     var slideshow: ImageSlideshow?
     
     
@@ -48,7 +48,8 @@ class ItemDetails: UIViewController {
 
 extension ItemDetails: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableModel.count
+        tableModel = DetailsTableModel.itemImage.getAvailableCells(data: currentProduct)
+        return tableModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableModel[indexPath.row] {
