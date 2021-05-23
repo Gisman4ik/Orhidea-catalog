@@ -7,7 +7,6 @@ enum DetailsTableModel: CaseIterable {
     case color
     case sizeChart
     case addToCart
-    case about
     
     func getAvailableCells(data: Product?) -> [DetailsTableModel] {
         
@@ -28,7 +27,7 @@ enum DetailsTableModel: CaseIterable {
         if data?.sizeChart != nil {
             cellsArray.append(Self.sizeChart)
         }
-        cellsArray.append(contentsOf: [Self.addToCart,Self.about])
+        cellsArray.append(contentsOf: [Self.addToCart])
         
         return cellsArray
     }
