@@ -8,7 +8,6 @@ class ItemDetails: UIViewController {
     var tableModel: [DetailsTableModel] = []
     var slideshow: ImageSlideshow?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
@@ -32,8 +31,6 @@ class ItemDetails: UIViewController {
         let colorCell = UINib(nibName: String(describing: ColorCell.self), bundle: nil)
         let sizeChartCell = UINib(nibName: String(describing: SizeChartCell.self), bundle: nil)
         let addToCartCell = UINib(nibName: String(describing: AddToCartCell.self), bundle: nil)
-        let aboutCell = UINib(nibName: String(describing: AboutCell.self), bundle: nil)
-        
         
         tableView.register(imageCell, forCellReuseIdentifier: String(describing: ItemImage.self))
         tableView.register(articleCell, forCellReuseIdentifier: String(describing: ArticleCell.self))
@@ -41,9 +38,7 @@ class ItemDetails: UIViewController {
         tableView.register(colorCell, forCellReuseIdentifier: String(describing: ColorCell.self))
         tableView.register(sizeChartCell, forCellReuseIdentifier: String(describing: SizeChartCell.self))
         tableView.register(addToCartCell, forCellReuseIdentifier: String(describing: AddToCartCell.self))
-        tableView.register(aboutCell, forCellReuseIdentifier: String(describing: AboutCell.self))
     }
-    
 }
 
 extension ItemDetails: UITableViewDataSource {
@@ -86,10 +81,6 @@ extension ItemDetails: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddToCartCell.self), for: indexPath)
             guard let addToCartCell = cell as? AddToCartCell else {return cell}
             return addToCartCell
-        case .about:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AboutCell.self), for: indexPath)
-            guard let aboutCell = cell as? AboutCell else {return cell}
-            return aboutCell
         }
     }
 }
