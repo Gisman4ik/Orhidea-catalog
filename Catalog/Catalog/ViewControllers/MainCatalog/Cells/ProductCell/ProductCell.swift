@@ -1,6 +1,5 @@
 import UIKit
 import SDWebImage
-import ImageSlideshow
 
 class ProductCell: UICollectionViewCell {
     
@@ -8,6 +7,7 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productSizeChart: UILabel!
     @IBOutlet weak var productQuantity: UILabel!
+    @IBOutlet weak var productImgWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,12 +25,11 @@ class ProductCell: UICollectionViewCell {
         else { productQuantity.text = "Нет в наличии" }
         let screen = UIScreen.main.bounds
         let imgWidth = (screen.width / 2) - 1
-        let placeholderImage = UIImage(named: "dressSample.jpeg")?.resizeImageWithNewWidthPreservingAspectRatio(targetWidth: imgWidth)
-        productImage.image = placeholderImage
+        let placeholderImage = UIImage(named: "dressSample.jpeg")
+        productImgWidthConstraint.constant = imgWidth
         productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage, options: [.avoidAutoSetImage]) { img, error, imgCache, URL in
             guard let img = img else {return}
-            let resizedImg = img.resizeImageWithNewWidthPreservingAspectRatio(targetWidth: imgWidth)
-            self.productImage.image = resizedImg
+            self.productImage.image = img
         }
     }
 }
