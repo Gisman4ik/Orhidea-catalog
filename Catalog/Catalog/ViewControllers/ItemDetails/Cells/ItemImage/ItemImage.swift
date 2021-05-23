@@ -7,14 +7,9 @@ class ItemImage: UITableViewCell {
     @IBOutlet weak var slideshow: ImageSlideshow!
     
     var slideshowDelegate: SlideshowDelegate?
-    var goBackDelegate: GoBackDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    @IBAction func navBackAction(_ sender: Any) {
-        goBackDelegate?.popVC()
     }
     
     func setImages (gallery: String?) {

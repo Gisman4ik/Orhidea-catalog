@@ -27,6 +27,21 @@ class Product: Mappable {
     var url = ""
     var imageURLString: String?
     var gallery = ""
+    var isInFavorite = false
+    
+    func addToFavorite() {
+        isInFavorite = true
+        for item in DataManager.shared.favoriteProducts {
+            if item.uid == self.uid {
+                return
+            }
+        }
+        DataManager.shared.favoriteProducts.append(self)
+    }
+    func removeFromFavorite() {
+        isInFavorite = false
+        DataManager.shared.favoriteProducts = DataManager.shared.favoriteProducts.filter{ $0.uid != self.uid }
+    }
     
     required init?(map: Map) {
         mapping(map: map)

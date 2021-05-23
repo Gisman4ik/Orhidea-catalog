@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,48 +28,14 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dressSample" translatesAutoresizingMaskIntoConstraints="NO" id="pJR-2f-eWj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="525"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9K4-Bf-OZT">
-                        <rect key="frame" x="390" y="20" width="40" height="40"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="systemRedColor"/>
-                        <state key="normal">
-                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
-                        </state>
-                        <state key="selected" image="heart.fill" catalog="system"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <integer key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIO-Uf-lLj">
-                        <rect key="frame" x="20" y="20" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="0hF-lo-Z48"/>
-                            <constraint firstAttribute="width" constant="40" id="XzY-GL-84B"/>
-                        </constraints>
-                        <color key="tintColor" systemColor="labelColor"/>
-                        <state key="normal">
-                            <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
-                        </state>
-                        <connections>
-                            <action selector="navBackAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="me8-4o-xsH"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9Mj-B5-EG6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="15M-KW-2QL"/>
-                    <constraint firstItem="zIO-Uf-lLj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="7Xs-RA-C0w"/>
-                    <constraint firstAttribute="trailing" secondItem="9K4-Bf-OZT" secondAttribute="trailing" constant="20" id="8DQ-IX-NOV"/>
-                    <constraint firstItem="9K4-Bf-OZT" firstAttribute="height" secondItem="zIO-Uf-lLj" secondAttribute="height" id="AYq-qw-Kon"/>
                     <constraint firstAttribute="bottom" secondItem="pJR-2f-eWj" secondAttribute="bottom" id="KSW-2m-Mmh"/>
                     <constraint firstItem="pJR-2f-eWj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PHr-N5-9Xm"/>
                     <constraint firstItem="pJR-2f-eWj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QKA-Vj-7nE"/>
-                    <constraint firstItem="9K4-Bf-OZT" firstAttribute="top" secondItem="zIO-Uf-lLj" secondAttribute="top" id="XAf-QK-jmT"/>
                     <constraint firstAttribute="right" secondItem="9Mj-B5-EG6" secondAttribute="right" id="hpw-iD-e1W"/>
-                    <constraint firstItem="zIO-Uf-lLj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="iq1-DY-mRp"/>
                     <constraint firstAttribute="bottom" secondItem="9Mj-B5-EG6" secondAttribute="bottom" id="lZZ-cv-FFO"/>
-                    <constraint firstItem="9K4-Bf-OZT" firstAttribute="width" secondItem="zIO-Uf-lLj" secondAttribute="width" id="mQ3-WF-j5i"/>
                     <constraint firstAttribute="trailing" secondItem="pJR-2f-eWj" secondAttribute="trailing" id="uMU-c3-9ji"/>
                     <constraint firstItem="9Mj-B5-EG6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ygQ-KV-vLB"/>
                 </constraints>
@@ -89,18 +54,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="dressSample" width="900" height="1200"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

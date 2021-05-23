@@ -5,8 +5,6 @@ class CatalogVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let loadingView = UIView()
-    var catalogData: CatalogData?
-    var transformCatalogProducts: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +24,16 @@ class CatalogVC: UIViewController {
     }
     func getCatalogData() {
         navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = true
         setLoadingView()
         NetworkManager.shared.getCatalogData { [self] (result) in
-            catalogData = result
-            transformCatalogProducts = result.products
+            DataManager.shared.catalogData = result
+            DataManager.shared.filteredCatalogProducts = result.products
             registerCell()
             collectionView.reloadData()
             loadingView.isHidden = true
             navigationController?.isNavigationBarHidden = false
+            tabBarController?.tabBar.isHidden = false
         } failure: { error in
             print(error)
         }
@@ -67,13 +67,13 @@ class CatalogVC: UIViewController {
      
     @IBAction func quantityFilterAction(_ sender: UISwitch) {
             if sender.isOn {
-                transformCatalogProducts = transformCatalogProducts.filter { product in
+                DataManager.shared.filteredCatalogProducts = DataManager.shared.filteredCatalogProducts.filter { product in
                     guard let quantity = Double(product.quantity) else {return false}
                     return quantity > 0
                 }
             }
             else {
-                transformCatalogProducts = catalogData!.products
+                DataManager.shared.filteredCatalogProducts = DataManager.shared.catalogData!.products
             }
             collectionView.reloadData()
     }
@@ -82,7 +82,7 @@ class CatalogVC: UIViewController {
 extension CatalogVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ItemDetails.self)) as? ItemDetails else {return}
-        itemDetailsVC.currentProduct = transformCatalogProducts[indexPath.row]
+        itemDetailsVC.currentProduct = DataManager.shared.filteredCatalogProducts[indexPath.row]
         navigationController?.pushViewController(itemDetailsVC, animated: true)
         
     }
@@ -90,12 +90,12 @@ extension CatalogVC: UICollectionViewDelegate {
 
 extension CatalogVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return transformCatalogProducts.count
+        return DataManager.shared.filteredCatalogProducts.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductCell.self), for: indexPath)
         guard let productCell = cell as? ProductCell else {return cell}
-        let productInfo = transformCatalogProducts[indexPath.row]
+        let productInfo = DataManager.shared.filteredCatalogProducts[indexPath.row]
         guard let productTitle = productInfo.title, let productImageURLString = productInfo.imageURLString else {return cell}
         
         productCell.setupProductInfo(title: productTitle, quantity: productInfo.quantity, sizeChart: productInfo.sizeChart, imageURLString: productImageURLString)

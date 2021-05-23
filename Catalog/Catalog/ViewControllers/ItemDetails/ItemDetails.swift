@@ -3,6 +3,7 @@ import ImageSlideshow
 class ItemDetails: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var currentProduct: Product?
     var tableModel: [DetailsTableModel] = []
@@ -11,9 +12,18 @@ class ItemDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        setFavoriteBtnAppearance()
         self.navigationController?.isNavigationBarHidden = true
     }
-    
+    func setFavoriteBtnAppearance() {
+        guard let product = currentProduct else {return}
+        if product.isInFavorite {
+            favoriteButton.isSelected = true
+        }
+        else {
+            favoriteButton.isSelected = false
+        }
+    }
     func setGestureFullSlideShow() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         guard let slideShow = slideshow else {return}
@@ -39,6 +49,20 @@ class ItemDetails: UIViewController {
         tableView.register(sizeChartCell, forCellReuseIdentifier: String(describing: SizeChartCell.self))
         tableView.register(addToCartCell, forCellReuseIdentifier: String(describing: AddToCartCell.self))
     }
+    
+    @IBAction func goBackAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func addToFavoriteAction(_ sender: Any) {
+        guard let product = currentProduct else {return}
+        if product.isInFavorite {
+            product.removeFromFavorite()
+        }
+        else {
+            product.addToFavorite()
+        }
+        setFavoriteBtnAppearance()
+    }
 }
 
 extension ItemDetails: UITableViewDataSource {
@@ -52,7 +76,6 @@ extension ItemDetails: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemImage.self), for: indexPath)
             guard let imageCell = cell as? ItemImage else {return cell}
             imageCell.slideshowDelegate = self
-            imageCell.goBackDelegate = self
             imageCell.setImages(gallery: currentProduct?.gallery)
             return imageCell
         case .article:
@@ -89,10 +112,5 @@ extension ItemDetails: SlideshowDelegate {
     func sendSlideShow(_ slideshow: ImageSlideshow){
         self.slideshow = slideshow
         self.setGestureFullSlideShow() 
-    }
-}
-extension ItemDetails: GoBackDelegate {
-    func popVC() {
-        self.navigationController?.popViewController(animated: true)
     }
 }
