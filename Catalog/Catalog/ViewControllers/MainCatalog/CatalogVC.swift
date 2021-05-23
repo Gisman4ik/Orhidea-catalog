@@ -1,5 +1,5 @@
 import UIKit
-
+import SDWebImage
 class CatalogVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -66,7 +66,6 @@ class CatalogVC: UIViewController {
     }
      
     @IBAction func quantityFilterAction(_ sender: UISwitch) {
-        DispatchQueue.main.async { [self] in
             if sender.isOn {
                 transformCatalogProducts = transformCatalogProducts.filter { product in
                     guard let quantity = Double(product.quantity) else {return false}
@@ -77,14 +76,13 @@ class CatalogVC: UIViewController {
                 transformCatalogProducts = catalogData!.products
             }
             collectionView.reloadData()
-        }
     }
 }
 
 extension CatalogVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ItemDetails.self)) as? ItemDetails else {return}
-        itemDetailsVC.currentProduct = catalogData?.products[indexPath.row]
+        itemDetailsVC.currentProduct = transformCatalogProducts[indexPath.row]
         navigationController?.pushViewController(itemDetailsVC, animated: true)
         
     }
