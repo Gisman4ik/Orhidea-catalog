@@ -6,5 +6,5 @@ final class DataManager {
     var catalogData: CatalogData?
     var filteredCatalogProducts: [Product] = []
     var favoriteProducts: [Product] = []
-    private init() {}
+    private  init() {}
 }

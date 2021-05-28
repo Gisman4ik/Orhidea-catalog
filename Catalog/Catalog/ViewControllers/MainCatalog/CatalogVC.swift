@@ -11,24 +11,36 @@ class CatalogVC: UIViewController {
         setVCAppearance()
         getCatalogData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        reloadVisibleCells()
+    }
     
     private func registerCell() {
         let productCellNib = UINib(nibName: String(describing: ProductCell.self), bundle: nil)
         collectionView.register(productCellNib, forCellWithReuseIdentifier: String(describing: ProductCell.self))
     }
-    func setVCAppearance() {
+    private func setVCAppearance() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.shadowImage = nil
         navBarAppearance.shadowColor = nil
         navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
-    func getCatalogData() {
+    private func getCatalogData() {
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
         setLoadingView()
         NetworkManager.shared.getCatalogData { [self] (result) in
             DataManager.shared.catalogData = result
             DataManager.shared.filteredCatalogProducts = result.products
+            let favoriteProductsIDs = RealmManager.shared.readFromFavorites()
+            for id in favoriteProductsIDs {
+                for product in DataManager.shared.filteredCatalogProducts {
+                    if product.uid == id {
+                        product.isInFavorite = true
+                        DataManager.shared.favoriteProducts.append(product)
+                    }
+                }
+            }
             registerCell()
             collectionView.reloadData()
             loadingView.isHidden = true
@@ -38,7 +50,7 @@ class CatalogVC: UIViewController {
             print(error)
         }
     }
-    func setLoadingView() {
+    private func setLoadingView() {
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.backgroundColor = #colorLiteral(red: 0.9763647914, green: 0.9765316844, blue: 0.9763541818, alpha: 1)
         view.addSubview(loadingView)
@@ -64,18 +76,24 @@ class CatalogVC: UIViewController {
         ]
         NSLayoutConstraint.activate(imgViewConstraints)
     }
-     
+    
     @IBAction func quantityFilterAction(_ sender: UISwitch) {
-            if sender.isOn {
-                DataManager.shared.filteredCatalogProducts = DataManager.shared.filteredCatalogProducts.filter { product in
-                    guard let quantity = Double(product.quantity) else {return false}
-                    return quantity > 0
-                }
+        if sender.isOn {
+            DataManager.shared.filteredCatalogProducts = DataManager.shared.filteredCatalogProducts.filter { product in
+                guard let quantity = Double(product.quantity) else {return false}
+                return quantity > 0
             }
-            else {
-                DataManager.shared.filteredCatalogProducts = DataManager.shared.catalogData!.products
-            }
-            collectionView.reloadData()
+        }
+        else {
+            DataManager.shared.filteredCatalogProducts = DataManager.shared.catalogData!.products
+        }
+        collectionView.setContentOffset(.zero, animated: false)
+        collectionView.reloadData()
+    }
+   private func reloadVisibleCells() {
+        let indexPathsForVisibleItems =
+            collectionView.indexPathsForVisibleItems
+        collectionView.reloadItems(at: indexPathsForVisibleItems)
     }
 }
 
@@ -84,7 +102,6 @@ extension CatalogVC: UICollectionViewDelegate {
         guard let itemDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ItemDetails.self)) as? ItemDetails else {return}
         itemDetailsVC.currentProduct = DataManager.shared.filteredCatalogProducts[indexPath.row]
         navigationController?.pushViewController(itemDetailsVC, animated: true)
-        
     }
 }
 
@@ -95,10 +112,11 @@ extension CatalogVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductCell.self), for: indexPath)
         guard let productCell = cell as? ProductCell else {return cell}
-        let productInfo = DataManager.shared.filteredCatalogProducts[indexPath.row]
-        guard let productTitle = productInfo.title, let productImageURLString = productInfo.imageURLString else {return cell}
-        
-        productCell.setupProductInfo(title: productTitle, quantity: productInfo.quantity, sizeChart: productInfo.sizeChart, imageURLString: productImageURLString)
+        let product = DataManager.shared.filteredCatalogProducts[indexPath.row]
+        guard let productTitle = product.title, let productImageURLString = product.imageURLString else {return cell}
+        productCell.currentProduct = product
+        productCell.setupProductInfo(title: productTitle, quantity: product.quantity, sizeChart: product.sizeChart, imageURLString: productImageURLString)
+        productCell.setFavoriteBtnAppearance()
         return productCell
     }
 }

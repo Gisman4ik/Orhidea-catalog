@@ -8,12 +8,13 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var productSizeChart: UILabel!
     @IBOutlet weak var productQuantity: UILabel!
     @IBOutlet weak var productImgWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    var  currentProduct: Product?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-    
     func setupProductInfo(title: String, quantity: String, sizeChart: String?, imageURLString: String) {
         productTitle.text = title
         if let sizes = sizeChart {
@@ -32,6 +33,27 @@ class ProductCell: UICollectionViewCell {
             self.productImage.image = img
         }
     }
+    func setFavoriteBtnAppearance() {
+        guard let product = currentProduct else {return}
+        if product.isInFavorite {
+            favoriteButton.isSelected = true
+        }
+        else {
+            favoriteButton.isSelected = false
+        }
+    }
+    
+    @IBAction func addToFavoriteAction(_ sender: Any) {
+        guard let product = currentProduct else {return}
+        if product.isInFavorite {
+            product.removeFromFavorite()
+        }
+        else {
+            product.addToFavorite()
+        }
+        setFavoriteBtnAppearance()
+    }
+    
 }
 
 

@@ -1,13 +1,16 @@
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 class CatalogData: Mappable {
     var total = 0
     var products: [Product] = []
     
-    required init?(map: Map) {
+    convenience required init?(map: Map) {
+        self.init()
         mapping(map: map)
     }
+    
     func mapping(map: Map) {
         total <- map["total"]
         products <- map["products"]
@@ -15,8 +18,8 @@ class CatalogData: Mappable {
 }
 
 class Product: Mappable {
-    var title: String?
     var uid = ""
+    var title: String?
     var sku = ""
     var text = ""
     var quantity = ""
@@ -31,21 +34,20 @@ class Product: Mappable {
     
     func addToFavorite() {
         isInFavorite = true
-        for item in DataManager.shared.favoriteProducts {
-            if item.uid == self.uid {
-                return
-            }
-        }
+        RealmManager.shared.addToFavorites(self)
         DataManager.shared.favoriteProducts.append(self)
     }
     func removeFromFavorite() {
         isInFavorite = false
+        RealmManager.shared.deleteFromFavorites(self)
         DataManager.shared.favoriteProducts = DataManager.shared.favoriteProducts.filter{ $0.uid != self.uid }
     }
     
-    required init?(map: Map) {
+    convenience required init?(map: Map) {
+        self.init()
         mapping(map: map)
     }
+    
     func mapping(map: Map) {
         title       <- map["title"]
         price       <- map["price"]
@@ -78,15 +80,11 @@ class Gallery: Mappable {
     
 }
 
-class Images: Mappable {
+class ProductIDForRealm: Object {
+    @objc dynamic var uid = ""
     
-    var img = ""
-    required init?(map: Map) {
-        mapping(map: map)
-    }
-    
-    func mapping(map: Map) {
-        img <- map[""]
-    }
+    override static func primaryKey() -> String? {
+       return "uid"
+     }
 }
-    
+

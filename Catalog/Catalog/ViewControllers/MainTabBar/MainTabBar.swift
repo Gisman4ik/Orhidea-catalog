@@ -36,14 +36,6 @@ class MainTabBar: UITabBarController {
         favoriteVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         let favoriteVCNav = UINavigationController(rootViewController: favoriteVC)
         
-        guard let cartVC = storyboard.instantiateViewController(withIdentifier: String(describing: CartVC.self)) as? CartVC else {
-            return controllers
-        }
-        cartVC.title = "Корзина"
-        cartVC.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart"), tag: 2)
-        cartVC.tabBarItem.selectedImage = UIImage(systemName: "cart.fill")
-        let cartVCNav = UINavigationController(rootViewController: cartVC)
-        
         guard let profileVC = storyboard.instantiateViewController(withIdentifier: String(describing: ProfileVC.self)) as? ProfileVC else {
             return controllers
         }
@@ -52,10 +44,20 @@ class MainTabBar: UITabBarController {
         profileVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         let profileVCNav = UINavigationController(rootViewController: profileVC)
         
+        guard let cartVC = storyboard.instantiateViewController(withIdentifier: String(describing: CartVC.self)) as? CartVC else {
+            return controllers
+        }
+        cartVC.title = "Корзина"
+        cartVC.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart"), tag: 2)
+        cartVC.tabBarItem.selectedImage = UIImage(systemName: "cart.fill")
+        let cartVCNav = UINavigationController(rootViewController: cartVC)
+        
+        
+        
         controllers.append(mainCatalogVCNav)
         controllers.append(favoriteVCNav)
-        controllers.append(cartVCNav)
         controllers.append(profileVCNav)
+        controllers.append(cartVCNav)
         
         return controllers
     }
