@@ -24,7 +24,7 @@ class ItemDetails: UIViewController {
             favoriteButton.isSelected = false
         }
     }
-    func setGestureFullSlideShow() {
+   private func setGestureFullSlideShow() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         guard let slideShow = slideshow else {return}
         slideShow.addGestureRecognizer(gestureRecognizer)
