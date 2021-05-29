@@ -193,20 +193,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Корзина" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTa-VC-9wS">
-                                <rect key="frame" x="143" y="407" width="104.33333333333331" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-V5-HgC">
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="pbo-lb-T1z" id="5Cu-S5-9tm"/>
+                                    <outlet property="delegate" destination="pbo-lb-T1z" id="zEp-YT-qqZ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HsD-qS-5oz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fTa-VC-9wS" firstAttribute="centerY" secondItem="Jdi-eH-9YC" secondAttribute="centerY" id="c0i-05-APt"/>
-                            <constraint firstItem="fTa-VC-9wS" firstAttribute="centerX" secondItem="Jdi-eH-9YC" secondAttribute="centerX" id="m1i-Vz-O3a"/>
+                            <constraint firstItem="pdd-V5-HgC" firstAttribute="leading" secondItem="HsD-qS-5oz" secondAttribute="leading" id="6vt-VL-qMJ"/>
+                            <constraint firstItem="pdd-V5-HgC" firstAttribute="top" secondItem="HsD-qS-5oz" secondAttribute="top" id="PIE-qb-Wly"/>
+                            <constraint firstItem="HsD-qS-5oz" firstAttribute="trailing" secondItem="pdd-V5-HgC" secondAttribute="trailing" id="nlP-rO-78A"/>
+                            <constraint firstItem="HsD-qS-5oz" firstAttribute="bottom" secondItem="pdd-V5-HgC" secondAttribute="bottom" id="vRX-8r-sXR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="pdd-V5-HgC" id="Wbu-47-com"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tw-0G-QgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

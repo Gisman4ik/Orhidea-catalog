@@ -32,6 +32,9 @@
                                 <integer key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="addToCartAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="47y-Bd-913"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -42,6 +45,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addToCartBtn" destination="dUf-fI-B9o" id="qee-VD-j8D"/>
+            </connections>
             <point key="canvasLocation" x="147.82608695652175" y="109.82142857142857"/>
         </tableViewCell>
     </objects>

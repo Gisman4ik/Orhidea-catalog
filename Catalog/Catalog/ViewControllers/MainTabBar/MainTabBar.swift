@@ -56,7 +56,7 @@ class MainTabBar: UITabBarController {
         
         controllers.append(mainCatalogVCNav)
         controllers.append(favoriteVCNav)
-        controllers.append(profileVCNav)
+//        controllers.append(profileVCNav)
         controllers.append(cartVCNav)
         
         return controllers

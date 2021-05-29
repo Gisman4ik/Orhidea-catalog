@@ -18,6 +18,8 @@ class SizeChartCell: UITableViewCell {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
+    var amountDelegate: ProductAmountDelegate?
+    var currentProduct: Product?
     var price: String?
     var maxSize = 0
     var minSize = 0
@@ -33,12 +35,8 @@ class SizeChartCell: UITableViewCell {
             totalStackView.isHidden = true
             return
         }
-        let range = sizesTxt.range(of: "[0-9][0-9]-[0-9][0-9]", options: .regularExpression)
-        guard let rangeOfSizes = range else {return}
-        let sizesArr = sizesTxt[rangeOfSizes].split(separator: "-")
-        guard let intMinSize = Int(sizesArr[0]), let intMaxSize = Int(sizesArr[1]) else {return}
-        minSize = intMinSize
-        maxSize = intMaxSize
+        minSize = (currentProduct?.extractMinMaxSizes()[0])!
+        maxSize =  (currentProduct?.extractMinMaxSizes()[1])!
         let sizeChartAttrStr = NSMutableAttributedString(string: "Размеры: ", attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
         sizeChartAttrStr.append(NSAttributedString(string: "\(minSize)-\(maxSize)"))
       sizeLabel.attributedText = sizeChartAttrStr
@@ -60,6 +58,7 @@ class SizeChartCell: UITableViewCell {
             amountValue -= 1
         }
         amountField.text = "\(amountValue)"
+        amountDelegate?.getProductAmount(amount: amountValue)
         calcTotalPrice(amount: amountValue)
     }
     
@@ -67,6 +66,7 @@ class SizeChartCell: UITableViewCell {
         guard let amountTxtValue = amountField.text, var amountValue = Int(amountTxtValue) else {return}
         amountValue += 1
         amountField.text = "\(amountValue)"
+        amountDelegate?.getProductAmount(amount: amountValue)
         calcTotalPrice(amount: amountValue)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

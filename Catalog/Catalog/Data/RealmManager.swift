@@ -7,7 +7,7 @@ final class RealmManager {
     let realm = try! Realm()
     
     func addToFavorites(_ product: Product) {
-        let productID = ProductIDForRealm()
+        let productID = RealmWrapperFavoriteID()
         productID.uid = product.uid
         try! realm.write{
             realm.add(productID)
@@ -15,14 +15,35 @@ final class RealmManager {
     }
     func readFromFavorites () -> [String]{
         try! realm.write{
-            return Array(realm.objects(ProductIDForRealm.self)).map { productID in
+            return Array(realm.objects(RealmWrapperFavoriteID.self)).map { productID in
                 return productID.uid
             }
         }
     }
     func deleteFromFavorites(_ product: Product) {
         try! realm.write{
-            let obj = realm.object(ofType: ProductIDForRealm.self, forPrimaryKey: product.uid)
+            let obj = realm.object(ofType: RealmWrapperFavoriteID.self, forPrimaryKey: product.uid)
+            guard let objForDelete = obj else {return}
+            realm.delete(objForDelete)
+        }
+    }
+    
+    func addToCart(_ product: Product, amount: Int) {
+        let productID = RealmWrapperCartID()
+        productID.uid = product.uid
+        productID.amount = amount
+        try! realm.write{
+            realm.add(productID)
+        }
+    }
+    func readFromCart () -> [RealmWrapperCartID]{
+        try! realm.write{
+            return Array(realm.objects(RealmWrapperCartID.self))
+        }
+    }
+    func deleteFromCart(_ product: Product) {
+        try! realm.write{
+            let obj = realm.object(ofType: RealmWrapperCartID.self, forPrimaryKey: product.uid)
             guard let objForDelete = obj else {return}
             realm.delete(objForDelete)
         }

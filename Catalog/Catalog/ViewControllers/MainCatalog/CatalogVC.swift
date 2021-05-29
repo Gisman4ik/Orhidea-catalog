@@ -33,11 +33,19 @@ class CatalogVC: UIViewController {
             DataManager.shared.catalogData = result
             DataManager.shared.filteredCatalogProducts = result.products
             let favoriteProductsIDs = RealmManager.shared.readFromFavorites()
-            for id in favoriteProductsIDs {
-                for product in DataManager.shared.filteredCatalogProducts {
-                    if product.uid == id {
+            let cartProductsIDs = RealmManager.shared.readFromCart()
+            for product in DataManager.shared.filteredCatalogProducts  {
+                for favoriteID in favoriteProductsIDs {
+                    if product.uid == favoriteID {
                         product.isInFavorite = true
                         DataManager.shared.favoriteProducts.append(product)
+                    }
+                }
+                for cartID in cartProductsIDs {
+                    if product.uid == cartID.uid {
+                        product.isInCart = true
+                        product.amountInCart = cartID.amount
+                        DataManager.shared.cartProducts.append(product)
                     }
                 }
             }

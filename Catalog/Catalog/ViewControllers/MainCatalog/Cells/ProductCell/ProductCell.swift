@@ -28,10 +28,7 @@ class ProductCell: UICollectionViewCell {
         let imgWidth = (screen.width / 2) - 1
         let placeholderImage = UIImage(named: "dressSample.jpeg")
         productImgWidthConstraint.constant = imgWidth
-        productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage, options: [.avoidAutoSetImage]) { img, error, imgCache, URL in
-            guard let img = img else {return}
-            self.productImage.image = img
-        }
+        productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage)
     }
     func setFavoriteBtnAppearance() {
         guard let product = currentProduct else {return}
