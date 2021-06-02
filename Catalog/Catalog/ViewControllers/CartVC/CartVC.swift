@@ -3,32 +3,22 @@ import UIKit
 class CartVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var tableModel = CartTableModel.itemInCart.getCells()
+    var tableModel = CartTableModel.getCells()
     var cartItems: [Product] = []
+    var emptyCartView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        setupEmptyCartView()
+        tableView.registerCell([PriceOnTop.self,OrderButton.self,ItemInCart.self,Total.self])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        tableModel = CartTableModel.itemInCart.getCells()
+        tableModel = CartTableModel.getCells()
         cartItems = DataManager.shared.cartProducts
-        ifCartIsEmpty()
+        checkCartIsEmpty()
         tableView.reloadData()
-    }
-    
-    func registerCells() {
-        let priceOnTopCell = UINib(nibName: String(describing: PriceOnTop.self), bundle: nil)
-        let orderButtonCell = UINib(nibName: String(describing: OrderButton.self), bundle: nil)
-        let itemInCartCell = UINib(nibName: String(describing: ItemInCart.self), bundle: nil)
-        let totalCell = UINib(nibName: String(describing: Total.self), bundle: nil)
-        
-        tableView.register(priceOnTopCell, forCellReuseIdentifier: String(describing: PriceOnTop.self))
-        tableView.register(orderButtonCell, forCellReuseIdentifier: String(describing: OrderButton.self))
-        tableView.register(itemInCartCell, forCellReuseIdentifier: String(describing: ItemInCart.self))
-        tableView.register(totalCell, forCellReuseIdentifier: String(describing: Total.self))
     }
     
     func calcTotalCartPrice () -> String {
@@ -41,13 +31,13 @@ class CartVC: UIViewController {
         return "\(String(format: "%g", totalPrice))"
     }
     
-    func ifCartIsEmpty() {
+    func checkCartIsEmpty() {
         if cartItems.count <= 0 {
             tableModel = []
+            emptyCartView.isHidden = false
+        }
+        else {
+            emptyCartView.isHidden = true
         }
     }
 }
-
-
-
-

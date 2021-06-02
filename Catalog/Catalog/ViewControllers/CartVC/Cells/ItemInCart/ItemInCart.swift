@@ -7,7 +7,7 @@ class ItemInCart: UITableViewCell {
     @IBOutlet weak var productPriceLabel: UILabel!
     
     var cartItem: Product?
-    var deleteDelegate: DeleteItemDelegate?
+    var deleteDelegate: DeletableItem?
     
     override func awakeFromNib() {
         super.awakeFromNib()

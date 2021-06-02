@@ -3,7 +3,7 @@ import ImageSlideshow
 
 extension ItemDetails: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableModel = DetailsTableModel.itemImage.getAvailableCells(data: currentProduct)
+        tableModel = DetailsTableModel.getAvailableCells(data: currentProduct)
         return tableModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

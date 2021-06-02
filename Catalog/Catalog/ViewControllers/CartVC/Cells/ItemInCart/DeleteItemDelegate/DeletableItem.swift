@@ -1,5 +1,5 @@
 import Foundation
 
-protocol DeleteItemDelegate {
+protocol DeletableItem {
     func deleteItem ()
 }

@@ -12,7 +12,7 @@ class ItemDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        tableView.registerCell([ItemImage.self, ArticleCell.self, PriceCell.self, ColorCell.self, SizeChartCell.self, AddToCartCell.self])
         setFavoriteBtnAppearance()
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -28,21 +28,6 @@ class ItemDetails: UIViewController {
             product.addToFavorite()
         }
         setFavoriteBtnAppearance()
-    }
-    private func registerCells() {
-        let imageCell = UINib(nibName: String(describing: ItemImage.self), bundle: nil)
-        let articleCell = UINib(nibName: String(describing: ArticleCell.self), bundle: nil)
-        let priceCell = UINib(nibName: String(describing: PriceCell.self), bundle: nil)
-        let colorCell = UINib(nibName: String(describing: ColorCell.self), bundle: nil)
-        let sizeChartCell = UINib(nibName: String(describing: SizeChartCell.self), bundle: nil)
-        let addToCartCell = UINib(nibName: String(describing: AddToCartCell.self), bundle: nil)
-        
-        tableView.register(imageCell, forCellReuseIdentifier: String(describing: ItemImage.self))
-        tableView.register(articleCell, forCellReuseIdentifier: String(describing: ArticleCell.self))
-        tableView.register(priceCell, forCellReuseIdentifier: String(describing: PriceCell.self))
-        tableView.register(colorCell, forCellReuseIdentifier: String(describing: ColorCell.self))
-        tableView.register(sizeChartCell, forCellReuseIdentifier: String(describing: SizeChartCell.self))
-        tableView.register(addToCartCell, forCellReuseIdentifier: String(describing: AddToCartCell.self))
     }
     func setFavoriteBtnAppearance() {
         guard let product = currentProduct else {return}

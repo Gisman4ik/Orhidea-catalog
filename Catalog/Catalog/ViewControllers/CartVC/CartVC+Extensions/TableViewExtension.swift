@@ -45,11 +45,11 @@ extension CartVC: UITableViewDataSource {
     }
 }
 
-extension CartVC: DeleteItemDelegate {
+extension CartVC: DeletableItem {
     func deleteItem() {
         cartItems = DataManager.shared.cartProducts
-        tableModel = CartTableModel.itemInCart.getCells()
-        ifCartIsEmpty()
+        tableModel = CartTableModel.getCells()
+        checkCartIsEmpty()
         tableView.reloadData()
     }
 }

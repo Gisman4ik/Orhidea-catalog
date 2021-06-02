@@ -8,7 +8,7 @@ enum DetailsTableModel: CaseIterable {
     case sizeChart
     case addToCart
     
-    func getAvailableCells(data: Product?) -> [DetailsTableModel] {
+    static func getAvailableCells(data: Product?) -> [DetailsTableModel] {
         
         var cellsArray: [DetailsTableModel] = []
         
