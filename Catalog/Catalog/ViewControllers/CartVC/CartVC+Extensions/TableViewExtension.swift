@@ -8,7 +8,17 @@ extension CartVC: UITableViewDelegate {
             navigationController?.pushViewController(itemDetailsVC, animated: true)
         }
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if tableView.contentOffset.y > orderButtonOffset.minY {
+            fixedOrderView.isHidden = false
+        }
+        else {
+            fixedOrderView.isHidden = true
+        }
+    }
+    
 }
+
 extension CartVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         tableModel.count
@@ -28,13 +38,14 @@ extension CartVC: UITableViewDataSource {
         case .orderBtn:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderButton.self), for: indexPath)
             guard let orderButtonCell = cell as? OrderButton else {return cell}
+            orderButtonIndexPath = indexPath
             return orderButtonCell
         case .itemInCart:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemInCart.self), for: indexPath)
             guard let itemInCartCell = cell as? ItemInCart else {return cell}
             itemInCartCell.cartItem = cartItems[indexPath.row]
             itemInCartCell.setupCell()
-            itemInCartCell.deleteDelegate = self
+            itemInCartCell.tableViewDelegate = self
             return itemInCartCell
         case .total:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: Total.self), for: indexPath)
@@ -45,11 +56,14 @@ extension CartVC: UITableViewDataSource {
     }
 }
 
-extension CartVC: DeletableItem {
+extension CartVC: DeletableItem, Updatable {
     func deleteItem() {
         cartItems = DataManager.shared.cartProducts
         tableModel = CartTableModel.getCells()
         checkCartIsEmpty()
+        tableView.reloadData()
+    }
+    func update() {
         tableView.reloadData()
     }
 }

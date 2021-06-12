@@ -41,6 +41,13 @@ final class RealmManager {
             return Array(realm.objects(RealmWrapperCartID.self))
         }
     }
+    func updateCartItemAmount(uid: String?, amount: Int?) {
+        guard let uid = uid, let amount = amount else {return}
+        try! realm.write{
+           let item = realm.object(ofType: RealmWrapperCartID.self, forPrimaryKey: uid)
+            item?.amount = amount
+        }
+    }
     func deleteFromCart(_ product: Product) {
         try! realm.write{
             let obj = realm.object(ofType: RealmWrapperCartID.self, forPrimaryKey: product.uid)

@@ -99,13 +99,13 @@ class Gallery: Mappable {
 class RealmWrapperFavoriteID: Object {
     @objc dynamic var uid = ""
     override static func primaryKey() -> String? {
-       return "uid"
-     }
+        return "uid"
+    }
 }
 class RealmWrapperCartID: Object {
     @objc dynamic var uid = ""
     @objc dynamic var amount = 1
     override static func primaryKey() -> String? {
-       return "uid"
-     }
+        return "uid"
+    }
 }

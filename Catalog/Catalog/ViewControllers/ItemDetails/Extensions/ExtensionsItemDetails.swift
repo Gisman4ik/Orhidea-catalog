@@ -39,13 +39,12 @@ extension ItemDetails: UITableViewDataSource {
                 sizeChartCell.amountField.text = "\(amount)"
             }
             sizeChartCell.calcTotalPrice(amount: currentProduct?.amountInCart ?? 1)
-            sizeChartCell.amountDelegate = self
             return sizeChartCell
         case .addToCart:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddToCartCell.self), for: indexPath)
             guard let addToCartCell = cell as? AddToCartCell else {return cell}
             addToCartCell.currentProduct = currentProduct
-            addToCartCell.amountDelegate = self
+            addToCartCell.setBtnAppearance()
             return addToCartCell
         }
     }
@@ -55,14 +54,5 @@ extension ItemDetails: SlideshowDelegate {
     func sendSlideShow(_ slideshow: ImageSlideshow){
         self.slideshow = slideshow
         self.setGestureFullSlideShow()
-    }
-}
-
-extension ItemDetails: ProductAmountDelegate {
-    func getProductAmount(amount: Int) {
-        chosenAmount = amount
-    }
-    func sendProductAmount() -> Int{
-        return chosenAmount
     }
 }

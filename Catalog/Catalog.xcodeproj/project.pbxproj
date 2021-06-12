@@ -14,7 +14,7 @@
 		9E04468C264F2BCB00A28A0E /* AddToCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E04468A264F2BCB00A28A0E /* AddToCartCell.xib */; };
 		9E53E407265C0F9100141506 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53E406265C0F9100141506 /* RealmManager.swift */; };
 		9E55099426527C890060BDE0 /* SlideshowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55099326527C890060BDE0 /* SlideshowDelegate.swift */; };
-		9E60ED452662926B0037BDB5 /* DeletableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60ED442662926B0037BDB5 /* DeletableItem.swift */; };
+		9E60ED452662926B0037BDB5 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60ED442662926B0037BDB5 /* Delegates.swift */; };
 		9E673992265A65F100DA248F /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E673991265A65F100DA248F /* FavoriteVC.swift */; };
 		9E673994265A6B1A00DA248F /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E673993265A6B1A00DA248F /* CartVC.swift */; };
 		9E673997265A6B4500DA248F /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E673996265A6B4500DA248F /* ProfileVC.swift */; };
@@ -52,7 +52,6 @@
 		9EABCB3E2661359700F187BD /* Total.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EABCB3C2661359700F187BD /* Total.xib */; };
 		9EABCB41266148DE00F187BD /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABCB40266148DE00F187BD /* TableViewExtension.swift */; };
 		9EABCB442661495D00F187BD /* ExtensionsItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABCB432661495D00F187BD /* ExtensionsItemDetails.swift */; };
-		9EABCB47266161E700F187BD /* ProductAmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABCB46266161E700F187BD /* ProductAmountDelegate.swift */; };
 		9EB276092667CF3C00B5A594 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB276082667CF3C00B5A594 /* UITableView+Extensions.swift */; };
 		9EB2760C2667DA0F00B5A594 /* LoadingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2760B2667DA0F00B5A594 /* LoadingExtension.swift */; };
 		9EB2760E2667DA4F00B5A594 /* GetDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2760D2667DA4F00B5A594 /* GetDataExtension.swift */; };
@@ -72,7 +71,7 @@
 		9E04468A264F2BCB00A28A0E /* AddToCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddToCartCell.xib; path = Catalog/ViewControllers/ItemDetails/Cells/AddToCart/AddToCartCell.xib; sourceTree = SOURCE_ROOT; };
 		9E53E406265C0F9100141506 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9E55099326527C890060BDE0 /* SlideshowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowDelegate.swift; sourceTree = "<group>"; };
-		9E60ED442662926B0037BDB5 /* DeletableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableItem.swift; sourceTree = "<group>"; };
+		9E60ED442662926B0037BDB5 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
 		9E673991265A65F100DA248F /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		9E673993265A6B1A00DA248F /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartVC.swift; path = Catalog/ViewControllers/CartVC/CartVC.swift; sourceTree = SOURCE_ROOT; };
 		9E673996265A6B4500DA248F /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 		9EABCB3C2661359700F187BD /* Total.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Total.xib; sourceTree = "<group>"; };
 		9EABCB40266148DE00F187BD /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		9EABCB432661495D00F187BD /* ExtensionsItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsItemDetails.swift; sourceTree = "<group>"; };
-		9EABCB46266161E700F187BD /* ProductAmountDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAmountDelegate.swift; sourceTree = "<group>"; };
 		9EB276082667CF3C00B5A594 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		9EB2760B2667DA0F00B5A594 /* LoadingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingExtension.swift; sourceTree = "<group>"; };
 		9EB2760D2667DA4F00B5A594 /* GetDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataExtension.swift; sourceTree = "<group>"; };
@@ -168,12 +166,12 @@
 			path = DelegateProtocol;
 			sourceTree = "<group>";
 		};
-		9E60ED43266292460037BDB5 /* DeleteItemDelegate */ = {
+		9E60ED43266292460037BDB5 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				9E60ED442662926B0037BDB5 /* DeletableItem.swift */,
+				9E60ED442662926B0037BDB5 /* Delegates.swift */,
 			);
-			path = DeleteItemDelegate;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		9E673990265A659600DA248F /* FavoriteVC */ = {
@@ -325,7 +323,6 @@
 		9E9C18BD263DA62B0010BF8C /* SizeChart */ = {
 			isa = PBXGroup;
 			children = (
-				9EABCB452661618600F187BD /* DelegateProtocols */,
 				9E9C18F0263DAFC80010BF8C /* SizeChartCell.xib */,
 				9E9C18EF263DAFC80010BF8C /* SizeChartCell.swift */,
 			);
@@ -417,7 +414,7 @@
 		9EABCB2B2661352900F187BD /* ItemInCart */ = {
 			isa = PBXGroup;
 			children = (
-				9E60ED43266292460037BDB5 /* DeleteItemDelegate */,
+				9E60ED43266292460037BDB5 /* Delegates */,
 				9EABCB332661357C00F187BD /* ItemInCart.swift */,
 				9EABCB342661357C00F187BD /* ItemInCart.xib */,
 			);
@@ -439,14 +436,6 @@
 				9EABCB432661495D00F187BD /* ExtensionsItemDetails.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		9EABCB452661618600F187BD /* DelegateProtocols */ = {
-			isa = PBXGroup;
-			children = (
-				9EABCB46266161E700F187BD /* ProductAmountDelegate.swift */,
-			);
-			path = DelegateProtocols;
 			sourceTree = "<group>";
 		};
 		9EB276072667CF0E00B5A594 /* Extensions */ = {
@@ -620,7 +609,6 @@
 				9EB2760E2667DA4F00B5A594 /* GetDataExtension.swift in Sources */,
 				9EB276102667DAD100B5A594 /* UICollectionView+Extensions.swift in Sources */,
 				9E87DA002626450600369B70 /* CatalogVC.swift in Sources */,
-				9EABCB47266161E700F187BD /* ProductAmountDelegate.swift in Sources */,
 				9E9C1901263DF1030010BF8C /* NetworkManager.swift in Sources */,
 				9E673992265A65F100DA248F /* FavoriteVC.swift in Sources */,
 				9EABCB2F2661355400F187BD /* PriceOnTop.swift in Sources */,
@@ -635,7 +623,7 @@
 				9EB276152667E44600B5A594 /* EmptyCart.swift in Sources */,
 				9E9C18D5263DAB4F0010BF8C /* ItemDetails.swift in Sources */,
 				9EB276092667CF3C00B5A594 /* UITableView+Extensions.swift in Sources */,
-				9E60ED452662926B0037BDB5 /* DeletableItem.swift in Sources */,
+				9E60ED452662926B0037BDB5 /* Delegates.swift in Sources */,
 				9E87D9FC2626450600369B70 /* AppDelegate.swift in Sources */,
 				9E53E407265C0F9100141506 /* RealmManager.swift in Sources */,
 				9E93AEAA26550991009FE280 /* ColorCell.swift in Sources */,

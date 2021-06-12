@@ -33,14 +33,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="E1a-CW-GDI"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" searchBarStyle="minimal" placeholder="Поиск товаров по артикулу                        " translatesAutoresizingMaskIntoConstraints="NO" id="UhT-Dm-WwV">
+                            <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" searchBarStyle="minimal" text="" placeholder="Поиск товаров по артикулу                        " translatesAutoresizingMaskIntoConstraints="NO" id="UhT-Dm-WwV">
                                 <rect key="frame" x="10" y="44" width="370" height="55"/>
                                 <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="vQk-tm-1ZE"/>
                                 </constraints>
                                 <color key="barTintColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jjb-gn-c8J"/>
+                                </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9U-MT-zOK" userLabel="BorderViewBottom">
                                 <rect key="frame" x="20" y="140" width="350" height="1"/>
@@ -128,7 +131,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Каталог" id="TMn-03-Isl"/>
                     <connections>
+                        <outlet property="catalogSearchBar" destination="UhT-Dm-WwV" id="7ZG-rf-Zq2"/>
                         <outlet property="collectionView" destination="tDo-jU-nXt" id="Ndd-4i-noK"/>
+                        <outlet property="quantitySwitch" destination="fYb-Pq-D2a" id="2g9-3M-1Bp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -185,6 +190,21 @@
             </objects>
             <point key="canvasLocation" x="3240" y="69.66824644549763"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ZQ0-7n-3WN">
+            <objects>
+                <viewController id="SbO-J2-hDp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pVj-JR-hAz">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="x3h-Ew-7Db"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PZX-UC-lNb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4042" y="-582"/>
+        </scene>
         <!--CartVC-->
         <scene sceneID="hOA-mx-AzO">
             <objects>
@@ -201,23 +221,58 @@
                                     <outlet property="delegate" destination="pbo-lb-T1z" id="zEp-YT-qqZ"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JJ-sv-MWj">
+                                <rect key="frame" x="0.0" y="44" width="390" height="76"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ThE-x4-7Tt">
+                                        <rect key="frame" x="20" y="10" width="350" height="56"/>
+                                        <color key="backgroundColor" red="0.071843124930000002" green="0.41779962180000002" blue="0.82518470290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="kOd-PV-er9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Перейти к оформлению заказа 440 р.">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ThE-x4-7Tt" firstAttribute="leading" secondItem="3JJ-sv-MWj" secondAttribute="leading" constant="20" id="YMt-qE-QM0"/>
+                                    <constraint firstAttribute="bottom" secondItem="ThE-x4-7Tt" secondAttribute="bottom" constant="10" id="ZMW-bC-AZz"/>
+                                    <constraint firstItem="ThE-x4-7Tt" firstAttribute="top" secondItem="3JJ-sv-MWj" secondAttribute="top" constant="10" id="lJm-5J-7L0"/>
+                                    <constraint firstAttribute="trailing" secondItem="ThE-x4-7Tt" secondAttribute="trailing" constant="20" id="v7X-aA-E2m"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HsD-qS-5oz"/>
                         <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pdd-V5-HgC" firstAttribute="leading" secondItem="HsD-qS-5oz" secondAttribute="leading" id="6vt-VL-qMJ"/>
+                            <constraint firstItem="3JJ-sv-MWj" firstAttribute="leading" secondItem="HsD-qS-5oz" secondAttribute="leading" id="98k-my-GGG"/>
                             <constraint firstItem="pdd-V5-HgC" firstAttribute="top" secondItem="HsD-qS-5oz" secondAttribute="top" id="PIE-qb-Wly"/>
+                            <constraint firstItem="3JJ-sv-MWj" firstAttribute="top" secondItem="HsD-qS-5oz" secondAttribute="top" id="QJN-oW-BI5"/>
+                            <constraint firstItem="HsD-qS-5oz" firstAttribute="trailing" secondItem="3JJ-sv-MWj" secondAttribute="trailing" id="krH-KG-H77"/>
                             <constraint firstItem="HsD-qS-5oz" firstAttribute="trailing" secondItem="pdd-V5-HgC" secondAttribute="trailing" id="nlP-rO-78A"/>
                             <constraint firstItem="HsD-qS-5oz" firstAttribute="bottom" secondItem="pdd-V5-HgC" secondAttribute="bottom" id="vRX-8r-sXR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fixedOrderButton" destination="ThE-x4-7Tt" id="EEg-Hh-zKA"/>
+                        <outlet property="fixedOrderView" destination="3JJ-sv-MWj" id="YG1-4c-CpV"/>
                         <outlet property="tableView" destination="pdd-V5-HgC" id="Wbu-47-com"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tw-0G-QgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4043" y="70"/>
+            <point key="canvasLocation" x="4041.5384615384614" y="69.66824644549763"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="IG5-50-w2m">

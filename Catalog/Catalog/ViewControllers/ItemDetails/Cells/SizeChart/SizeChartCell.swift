@@ -18,7 +18,6 @@ class SizeChartCell: UITableViewCell {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
-    var amountDelegate: ProductAmountDelegate?
     var currentProduct: Product?
     var price: String?
     var maxSize = 0
@@ -53,21 +52,21 @@ class SizeChartCell: UITableViewCell {
     }
     
     @IBAction func minusItemAction(_ sender: UIButton) {
-        guard let amountTxtValue = amountField.text, var amountValue = Int(amountTxtValue) else {return}
-        if amountValue > 1 {
-            amountValue -= 1
+        guard var amount = currentProduct?.amountInCart else {return}
+        if amount > 1 {
+            amount -= 1
         }
-        amountField.text = "\(amountValue)"
-        amountDelegate?.getProductAmount(amount: amountValue)
-        calcTotalPrice(amount: amountValue)
+        currentProduct?.amountInCart = amount
+        amountField.text = "\(amount)"
+        calcTotalPrice(amount: amount)
     }
     
     @IBAction func plusItemAction(_ sender: Any) {
-        guard let amountTxtValue = amountField.text, var amountValue = Int(amountTxtValue) else {return}
-        amountValue += 1
-        amountField.text = "\(amountValue)"
-        amountDelegate?.getProductAmount(amount: amountValue)
-        calcTotalPrice(amount: amountValue)
+        var amount = currentProduct?.amountInCart ?? 1
+        amount += 1
+        currentProduct?.amountInCart = amount
+        amountField.text = "\(amount)"
+        calcTotalPrice(amount: amount)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let biggerMinusButtonFrame = minusButton.frame.insetBy(dx: -10, dy: -10)

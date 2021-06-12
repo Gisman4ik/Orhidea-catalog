@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="327" height="72"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuv-Hs-Ven">
+                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuv-Hs-Ven">
                         <rect key="frame" x="20" y="10" width="287" height="56"/>
                         <color key="backgroundColor" red="0.071843124930000002" green="0.41779962180000002" blue="0.82518470290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -43,7 +43,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="90.579710144927546" y="115.17857142857142"/>
+            <point key="canvasLocation" x="-151" y="-46"/>
         </tableViewCell>
     </objects>
 </document>
