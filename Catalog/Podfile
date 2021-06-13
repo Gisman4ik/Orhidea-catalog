@@ -7,5 +7,5 @@ target 'Catalog' do
   pod 'SDWebImage'
   pod 'ImageSlideshow'
   pod "ImageSlideshow/SDWebImage"
-	
+  pod 'TextFieldEffects'
 end

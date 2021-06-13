@@ -55,6 +55,17 @@ final class RealmManager {
             realm.delete(objForDelete)
         }
     }
+    func readCustomerSave() -> CustomerInfo? {
+        try! realm.write{
+            let save =  realm.objects(CustomerInfo.self).first
+            return save
+        }
+    }
+    func createCustomerSave() {
+        try! realm.write{
+            realm.add(CustomerInfo())
+        }
+    }
     
     private init() {}
 }

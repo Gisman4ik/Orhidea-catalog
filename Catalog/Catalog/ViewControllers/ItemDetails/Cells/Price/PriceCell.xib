@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,6 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="CatalogWhiteColor"/>
                 <constraints>
                     <constraint firstItem="ZDr-b6-Ldp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4hQ-nk-k9C"/>
                     <constraint firstAttribute="bottom" secondItem="ZDr-b6-Ldp" secondAttribute="bottom" constant="9" id="NoE-vY-5kt"/>
@@ -37,4 +39,9 @@
             <point key="canvasLocation" x="155.07246376811597" y="105.13392857142857"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="CatalogWhiteColor">
+            <color red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

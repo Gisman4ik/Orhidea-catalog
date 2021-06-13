@@ -24,6 +24,7 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - ImageSlideshow
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Moya-ObjectMapper
   - RealmSwift
   - SDWebImage
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
@@ -43,6 +45,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -53,7 +56,8 @@ SPEC CHECKSUMS:
   Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
   RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 63d2ba4d8d8c651f6425fa490099c0d0ab79bd89
+PODFILE CHECKSUM: 6e342cf4c98f7a1e03ce1bb5afdb5d976c9d7a86
 
 COCOAPODS: 1.10.1

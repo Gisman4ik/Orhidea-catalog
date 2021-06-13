@@ -39,6 +39,7 @@ extension CartVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderButton.self), for: indexPath)
             guard let orderButtonCell = cell as? OrderButton else {return cell}
             orderButtonIndexPath = indexPath
+            orderButtonCell.action = pushCustomerInfoVC
             return orderButtonCell
         case .itemInCart:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemInCart.self), for: indexPath)

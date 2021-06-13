@@ -29,6 +29,9 @@ class CartVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         orderButtonOffset = tableView.rectForRow(at: orderButtonIndexPath)
     }
+    @IBAction func makeAnOrderAction(_ sender: Any) {
+        pushCustomerInfoVC()
+    }
     func setFixedOrderBtnAppearance() {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -55,5 +58,9 @@ class CartVC: UIViewController {
         else {
             emptyCartView.isHidden = true
         }
+    }
+    func pushCustomerInfoVC() {
+        guard let customerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CustomerInfoVC.self)) as? CustomerInfoVC else {return}
+        self.navigationController?.pushViewController(customerVC, animated: true)
     }
 }

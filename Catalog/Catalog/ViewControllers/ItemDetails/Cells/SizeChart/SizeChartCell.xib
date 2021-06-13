@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,6 +111,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="CatalogWhiteColor"/>
             <connections>
                 <outlet property="amountField" destination="pst-tq-3a1" id="KWv-ZP-Ur2"/>
                 <outlet property="minusButton" destination="jax-XV-JVe" id="ox8-CZ-cB3"/>
@@ -119,12 +121,15 @@
                 <outlet property="totalPriceLabel" destination="SLD-WP-ydq" id="TWq-VR-QfS"/>
                 <outlet property="totalStackView" destination="wQn-H2-be4" id="WAh-CO-PHZ"/>
             </connections>
-            <point key="canvasLocation" x="-317" y="-2"/>
+            <point key="canvasLocation" x="67" y="-17"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="CatalogWhiteColor">
+            <color red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
