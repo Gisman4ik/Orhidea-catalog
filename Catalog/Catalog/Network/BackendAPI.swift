@@ -10,37 +10,44 @@ extension NetworkService: TargetType {
     var baseURL: URL {
         return URL(string: "https://api.npoint.io/")!
     }
+    
     var path: String {
         switch self {
         case .getCatalogData:
             return "60435ebecaf07cd199a0"
         }
     }
+    
     var method: Moya.Method {
         switch self {
         case .getCatalogData:
             return .get
         }
     }
+    
     var sampleData: Data {
         return Data()
     }
+    
     var headers: [String : String]? {
         return ["Content-Type": "application/json"]
     }
+    
     var parameters: [String: Any]? {
-        var params = [String: Any]()
-        switch self {
-        default:
+//        var params = [String: Any]()
+//        switch self {
+//        default:
             return nil
-        }
+//        }
     }
+    
     var parameterEncoding: ParameterEncoding {
         switch self {
         default:
             return JSONEncoding.prettyPrinted
         }
     }
+    
     var task: Task {
         switch self {
         default:

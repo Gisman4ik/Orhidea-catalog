@@ -1,6 +1,7 @@
 import UIKit
 import ImageSlideshow
-class ItemDetails: UIViewController {
+
+class ItemDetails: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -8,17 +9,19 @@ class ItemDetails: UIViewController {
     var currentProduct: Product?
     var tableModel: [DetailsTableModel] = []
     var slideshow: ImageSlideshow?
-    var chosenAmount = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerCell([ItemImage.self, ArticleCell.self, PriceCell.self, ColorCell.self, SizeChartCell.self, AddToCartCell.self])
         setFavoriteBtnAppearance()
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
+    
     @IBAction func goBackAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func addToFavoriteAction(_ sender: Any) {
         guard let product = currentProduct else {return}
         if product.isInFavorite {
@@ -29,6 +32,7 @@ class ItemDetails: UIViewController {
         }
         setFavoriteBtnAppearance()
     }
+    
     func setFavoriteBtnAppearance() {
         guard let product = currentProduct else {return}
         if product.isInFavorite {
@@ -38,11 +42,13 @@ class ItemDetails: UIViewController {
             favoriteButton.isSelected = false
         }
     }
+    
    func setGestureFullSlideShow() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         guard let slideShow = slideshow else {return}
         slideShow.addGestureRecognizer(gestureRecognizer)
     }
+    
     @objc func didTap() {
         guard let slideShow = slideshow else {return}
        let fullScreenController = slideShow.presentFullScreenController(from: self)

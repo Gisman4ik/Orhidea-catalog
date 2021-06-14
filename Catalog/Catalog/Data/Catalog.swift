@@ -41,40 +41,45 @@ class Product: Mappable {
         RealmManager.shared.addToFavorites(self)
         DataManager.shared.favoriteProducts.append(self)
     }
+    
     func removeFromFavorite() {
         isInFavorite = false
         RealmManager.shared.deleteFromFavorites(self)
         DataManager.shared.favoriteProducts = DataManager.shared.favoriteProducts.filter{ $0.uid != self.uid }
     }
+    
     func addToCart(amount: Int) {
         isInCart = true
         RealmManager.shared.addToCart(self, amount: amount)
         self.amountInCart = amount
         DataManager.shared.cartProducts.append(self)
     }
+    
     func removeFromCart() {
         isInCart = false
         self.amountInCart = nil
         RealmManager.shared.deleteFromCart(self)
         DataManager.shared.cartProducts = DataManager.shared.cartProducts.filter{ $0.uid != self.uid }
     }
+    
     convenience required init?(map: Map) {
         self.init()
         mapping(map: map)
     }
+    
     func mapping(map: Map) {
-        title       <- map["title"]
-        price       <- map["price"]
-        text        <- map["text"]
-        quantity    <- map["quantity"]
-        imageURLString <- map["editions.0.img"]
-        color       <- map["editions.0.Цвет"]
-        sizeChart   <- map["descr"]
-        url         <- map["url"]
-        uid         <- map["uid"]
-        sku         <- map["sku"]
-        sort        <- map["sort"]
-        gallery     <- map["gallery"]
+        title           <- map["title"]
+        price           <- map["price"]
+        text            <- map["text"]
+        quantity        <- map["quantity"]
+        imageURLString  <- map["editions.0.img"]
+        color           <- map["editions.0.Цвет"]
+        sizeChart       <- map["descr"]
+        url             <- map["url"]
+        uid             <- map["uid"]
+        sku             <- map["sku"]
+        sort            <- map["sort"]
+        gallery         <- map["gallery"]
     }
     
     func extractMinMaxSizes() -> [Int]{
@@ -88,9 +93,11 @@ class Product: Mappable {
 
 class Gallery: Mappable {
     var images = ""
+    
     required init?(map: Map) {
         mapping(map: map)
     }
+    
     func mapping(map: Map) {
         images <- map["img\\"]
     }
@@ -98,6 +105,7 @@ class Gallery: Mappable {
 
 class RealmWrapperFavoriteID: Object {
     @objc dynamic var uid = ""
+    
     override static func primaryKey() -> String? {
         return "uid"
     }
@@ -105,6 +113,7 @@ class RealmWrapperFavoriteID: Object {
 class RealmWrapperCartID: Object {
     @objc dynamic var uid = ""
     @objc dynamic var amount = 1
+    
     override static func primaryKey() -> String? {
         return "uid"
     }

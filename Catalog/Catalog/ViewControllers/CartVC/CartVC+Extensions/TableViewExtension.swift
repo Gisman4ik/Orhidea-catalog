@@ -64,6 +64,7 @@ extension CartVC: DeletableItem, Updatable {
         checkCartIsEmpty()
         tableView.reloadData()
     }
+    
     func update() {
         tableView.reloadData()
     }

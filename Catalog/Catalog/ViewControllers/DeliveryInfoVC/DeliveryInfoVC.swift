@@ -19,10 +19,12 @@ class DeliveryInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         setupFields()
         setNavBarAppearance()
     }
+
     func setupFields() {
         let font = UIFont(name: "ArialMT", size: 18)
         countryField.font = font
@@ -38,6 +40,7 @@ class DeliveryInfoVC: UIViewController {
         apartNumField.text = customerSave.apartmentNum
         postcodeField.text = customerSave.postcode
     }
+
     func setCountryPicker() {
         let countryPicker = UIPickerView()
         countryPicker.delegate = self
@@ -57,10 +60,12 @@ class DeliveryInfoVC: UIViewController {
         countryField.inputAccessoryView = toolBar
         countryField.inputView = countryPicker
     }
+
     @objc func cancelPickerAction() {
         countryField.text = ""
         view.endEditing(true)
     }
+
     @objc func donePickerAction() {
         if (countryField.text ?? "").isEmpty{
             view.endEditing(true)
@@ -71,6 +76,7 @@ class DeliveryInfoVC: UIViewController {
             view.endEditing(true)
         }
     }
+
     func setNavBarAppearance() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Далее", style: .plain, target: self, action: #selector(nextBarButtonAction))
         let backButton = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(backBarButtonAction))
@@ -79,10 +85,12 @@ class DeliveryInfoVC: UIViewController {
         navigationItem.leftBarButtonItem = backButton
         self.navigationItem.titleView = setTitle(title: "Оформление заказа", titleColor: UIColor.black, titleSize: 16, subtitle: "Шаг 2 из 3", subtitleColor: UIColor.gray, subtitleSize: 12, view: self.view)
     }
+
     @objc func nextBarButtonAction() {
         guard let orderInfoDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: OrderInfoDetailsVC.self)) as? OrderInfoDetailsVC else {return}
         navigationController?.pushViewController(orderInfoDetailsVC, animated: true)
     }
+
     @objc func backBarButtonAction() {
         navigationController?.popViewController(animated: true)
     }
@@ -118,12 +126,10 @@ extension DeliveryInfoVC: UIPickerViewDelegate {
         DataManager.shared.deliveryCountries[row]
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if DataManager.shared.deliveryCountries[row] == "Другая(указать свою)" {
+        if DataManager.shared.deliveryCountries[row] == "Другая (указать свою)" {
             countryField.text = ""
-        }
-        else {
+        } else {
             countryField.text = DataManager.shared.deliveryCountries[row]
         }
     }

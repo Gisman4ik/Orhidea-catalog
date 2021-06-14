@@ -7,6 +7,7 @@ final class DataManager {
     var filteredCatalogProducts: [Product] = []
     var favoriteProducts: [Product] = []
     var cartProducts: [Product] = []
-    var deliveryCountries = ["Другая(указать свою)","Беларусь","Россия","Украина","Казахстан"]
+    var deliveryCountries = ["Другая (указать свою)","Беларусь","Россия","Украина","Казахстан"]
+    
     private  init() {}
 }
