@@ -6,6 +6,7 @@ extension ItemDetails: UITableViewDataSource {
         tableModel = DetailsTableModel.getAvailableCells(data: currentProduct)
         return tableModel.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableModel[indexPath.row] {
         case .itemImage:

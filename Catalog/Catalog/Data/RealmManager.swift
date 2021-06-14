@@ -13,6 +13,7 @@ final class RealmManager {
             realm.add(productID)
         }
     }
+    
     func readFromFavorites () -> [String]{
         try! realm.write{
             return Array(realm.objects(RealmWrapperFavoriteID.self)).map { productID in
@@ -20,6 +21,7 @@ final class RealmManager {
             }
         }
     }
+    
     func deleteFromFavorites(_ product: Product) {
         try! realm.write{
             let obj = realm.object(ofType: RealmWrapperFavoriteID.self, forPrimaryKey: product.uid)
@@ -36,11 +38,13 @@ final class RealmManager {
             realm.add(productID)
         }
     }
+    
     func readFromCart () -> [RealmWrapperCartID]{
         try! realm.write{
             return Array(realm.objects(RealmWrapperCartID.self))
         }
     }
+    
     func updateCartItemAmount(uid: String?, amount: Int?) {
         guard let uid = uid, let amount = amount else {return}
         try! realm.write{
@@ -48,6 +52,7 @@ final class RealmManager {
             item?.amount = amount
         }
     }
+    
     func deleteFromCart(_ product: Product) {
         try! realm.write{
             let obj = realm.object(ofType: RealmWrapperCartID.self, forPrimaryKey: product.uid)
@@ -55,12 +60,14 @@ final class RealmManager {
             realm.delete(objForDelete)
         }
     }
+    
     func readCustomerSave() -> CustomerInfo? {
         try! realm.write{
             let save =  realm.objects(CustomerInfo.self).first
             return save
         }
     }
+    
     func createCustomerSave() {
         try! realm.write{
             realm.add(CustomerInfo())

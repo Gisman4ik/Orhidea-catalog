@@ -38,7 +38,7 @@ class SizeChartCell: UITableViewCell {
         maxSize =  (currentProduct?.extractMinMaxSizes()[1])!
         let sizeChartAttrStr = NSMutableAttributedString(string: "Размеры: ", attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
         sizeChartAttrStr.append(NSAttributedString(string: "\(minSize)-\(maxSize)"))
-      sizeLabel.attributedText = sizeChartAttrStr
+        sizeLabel.attributedText = sizeChartAttrStr
     }
     
     func calcTotalPrice(amount: Int) {
@@ -68,6 +68,7 @@ class SizeChartCell: UITableViewCell {
         amountField.text = "\(amount)"
         calcTotalPrice(amount: amount)
     }
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let biggerMinusButtonFrame = minusButton.frame.insetBy(dx: -10, dy: -10)
         if biggerMinusButtonFrame.contains(point) {

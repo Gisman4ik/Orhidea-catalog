@@ -10,26 +10,44 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var productImgWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var  currentProduct: Product?
+    var currentProduct: Product? {
+        didSet {
+            setupProductInfo()
+            setFavoriteBtnAppearance()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    func setupProductInfo(title: String, quantity: String, sizeChart: String?, imageURLString: String) {
-        productTitle.text = title
-        if let sizes = sizeChart {
+    
+    func setupProductInfo() {
+        guard let product = currentProduct else { return }
+        if let title = product.title {
+            productTitle.text = title
+        }
+       
+        if let sizes = product.sizeChart {
             productSizeChart.text = sizes
         }
-        if let dblQuantity = Double(quantity) {
+        
+        if let dblQuantity = Double(product.quantity) {
             dblQuantity <= 0 ? (productQuantity.text = "Нет в наличии") : (productQuantity.text = "")
+        } else {
+            productQuantity.text = "Нет в наличии"
         }
-        else { productQuantity.text = "Нет в наличии" }
+        
         let screen = UIScreen.main.bounds
         let imgWidth = (screen.width / 2) - 1
         let placeholderImage = UIImage(named: "dressSample.jpeg")
         productImgWidthConstraint.constant = imgWidth
-        productImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: placeholderImage)
+        
+        if let picUrl = product.imageURLString {
+            productImage.sd_setImage(with: URL(string: picUrl), placeholderImage: placeholderImage)
+        }
+        
     }
+    
     func setFavoriteBtnAppearance() {
         guard let product = currentProduct else {return}
         if product.isInFavorite {
@@ -50,7 +68,6 @@ class ProductCell: UICollectionViewCell {
         }
         setFavoriteBtnAppearance()
     }
-    
 }
 
 

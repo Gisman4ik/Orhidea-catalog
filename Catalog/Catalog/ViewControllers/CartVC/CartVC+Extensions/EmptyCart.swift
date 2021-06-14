@@ -17,6 +17,7 @@ extension CartVC {
         createEmptyCartLabel(iconView: iconView)
         emptyCartView.isHidden = true
     }
+    
     func createEmptyCartViewImg() -> UIImageView{
         let emptyCartIcon = UIImage(named: "shoppingBag.svg")
         let EmptyCartViewImg = UIImageView(image: emptyCartIcon)
@@ -32,6 +33,7 @@ extension CartVC {
         NSLayoutConstraint.activate(imgViewConstraints)
         return EmptyCartViewImg
     }
+    
     func createEmptyCartLabel(iconView: UIImageView) {
         let emptyCartLabel = UILabel()
         emptyCartView.addSubview(emptyCartLabel)

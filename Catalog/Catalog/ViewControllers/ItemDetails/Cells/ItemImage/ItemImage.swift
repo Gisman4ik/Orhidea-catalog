@@ -27,7 +27,8 @@ class ItemImage: UITableViewCell {
         slideshow.zoomEnabled = true
         slideshow.activityIndicator = DefaultActivityIndicator()
     }
-    private func detectURLsFromStr (_ string: String) -> [String] {
+    
+    private func detectURLsFromStr(_ string: String) -> [String] {
         let validString = string.replacingOccurrences(of: "\\", with: "")
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         let matches = detector.matches(in: validString, options: [], range: NSRange(location: 0, length: validString.utf16.count))
