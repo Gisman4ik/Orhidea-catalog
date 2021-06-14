@@ -39,7 +39,7 @@ class ProductCell: UICollectionViewCell {
         
         let screen = UIScreen.main.bounds
         let imgWidth = (screen.width / 2) - 1
-        let placeholderImage = UIImage(named: "dressSample.jpeg")
+        let placeholderImage = UIImage(named: "dressPlaceholder.png")
         productImgWidthConstraint.constant = imgWidth
         
         if let picUrl = product.imageURLString {
