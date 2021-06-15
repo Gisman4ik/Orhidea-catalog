@@ -4,21 +4,31 @@ class FavoriteVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var currentFavorites: [Product] = []
+    var emptyFavoritesView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        emptyFavoritesView = setupEmptyView(img: UIImage(named: "heartFavorite.png") ?? UIImage(), imgHeight: 150, imgCenterIndent: -50, labelWidth: 300, labelText: "Добавьте в товары в Избранное, чтобы вернуться к ним позже", labelTopIndent: 40)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         currentFavorites = DataManager.shared.favoriteProducts
+        checkFavoritesIsEmpty()
         collectionView.reloadData()
     }
 
     private func registerCell() {
         let productCellNib = UINib(nibName: String(describing: ProductCell.self), bundle: nil)
         collectionView.register(productCellNib, forCellWithReuseIdentifier: String(describing: ProductCell.self))
+    }
+    func checkFavoritesIsEmpty() {
+        if currentFavorites.count <= 0 {
+            emptyFavoritesView.isHidden = false
+        } else {
+            emptyFavoritesView.isHidden = true
+        }
     }
 }
 

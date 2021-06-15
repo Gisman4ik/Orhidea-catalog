@@ -21,6 +21,9 @@ class ProductCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
+    override func prepareForReuse() {
+        productImage.image = nil
+    }
     func setupProductInfo() {
         guard let product = currentProduct else { return }
         if let title = product.title {
@@ -45,7 +48,6 @@ class ProductCell: UICollectionViewCell {
         if let picUrl = product.imageURLString {
             productImage.sd_setImage(with: URL(string: picUrl), placeholderImage: placeholderImage)
         }
-        
     }
     
     func setFavoriteBtnAppearance() {
@@ -67,28 +69,5 @@ class ProductCell: UICollectionViewCell {
             product.addToFavorite()
         }
         setFavoriteBtnAppearance()
-    }
-}
-
-
-extension UIImage {
-    func resizeImageWithNewWidthPreservingAspectRatio(targetWidth: CGFloat) -> UIImage {
-        let heightRatio = size.height / size.width
-        let widthRatio = size.width / size.height
-        let scaleFactor = max(widthRatio, heightRatio)
-        let scaledImageSize = CGSize(
-            width: targetWidth,
-            height: targetWidth * scaleFactor
-        )
-        let renderer = UIGraphicsImageRenderer(
-            size: scaledImageSize
-        )
-        let scaledImage = renderer.image { _ in
-            self.draw(in: CGRect(
-                origin: .zero,
-                size: scaledImageSize
-            ))
-        }
-        return scaledImage
     }
 }

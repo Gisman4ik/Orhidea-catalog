@@ -14,7 +14,7 @@ class CartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fixedOrderButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
-        setupEmptyCartView()
+        emptyCartView = setupEmptyView(img: UIImage(named: "emptyCart.png") ?? UIImage(), imgHeight: 250, imgCenterIndent: -50, labelWidth: 200, labelText: "Добавьте в Корзину товары из каталога", labelTopIndent: 0)
         tableView.registerCell([PriceOnTop.self,OrderButton.self,ItemInCart.self,Total.self])
     }
     
