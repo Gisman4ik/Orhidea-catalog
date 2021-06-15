@@ -54,3 +54,11 @@ extension FavoriteVC: UICollectionViewDataSource {
         return productCell
     }
 }
+
+extension FavoriteVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screen = UIScreen.main.bounds
+        let imgWidth = (screen.width / 2) - 1
+        return CGSize(width: imgWidth, height: imgWidth * (1200/900) + 100)
+    }
+}
