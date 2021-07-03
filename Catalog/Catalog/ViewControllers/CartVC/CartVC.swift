@@ -10,6 +10,15 @@ class CartVC: UIViewController {
     var emptyCartView = UIView()
     var orderButtonOffset = CGRect()
     var orderButtonIndexPath = IndexPath()
+    var totalPrice: String {
+        var totalPrice = 0.0
+        for item in cartItems {
+            guard let amount = item.amountInCart, let price = item.price, let dblPrice = Double(price) else {return "0"}
+            let amountInLineUp = ((item.extractMinMaxSizes()[1] - item.extractMinMaxSizes()[0]) / 2) + 1
+            totalPrice += Double(amount) * dblPrice * Double(amountInLineUp)
+        }
+        return "\(String(format: "%g", totalPrice))"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,25 +41,15 @@ class CartVC: UIViewController {
     }
     
     @IBAction func makeAnOrderAction(_ sender: Any) {
-        pushCustomerInfoVC()
+        pushViewController(controller: CustomerInfoVC.self)
     }
     
     func setFixedOrderBtnAppearance() {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let btnTitleStr = NSMutableAttributedString(string: "Перейти к оформлению заказа\n",attributes: [.paragraphStyle: paragraphStyle])
-        btnTitleStr.append(NSAttributedString(string: "\(calcTotalCartPrice()) р.", attributes: [.font: UIFont.systemFont(ofSize: 15),.paragraphStyle: paragraphStyle]))
+        btnTitleStr.append(NSAttributedString(string: "\(totalPrice) р.", attributes: [.font: UIFont.systemFont(ofSize: 15),.paragraphStyle: paragraphStyle]))
         fixedOrderButton.setAttributedTitle(btnTitleStr, for: .normal)
-    }
-    
-    func calcTotalCartPrice () -> String {
-        var totalPrice = 0.0
-        for item in cartItems {
-            guard let amount = item.amountInCart, let price = item.price, let dblPrice = Double(price) else {return "0"}
-            let amountInLineUp = ((item.extractMinMaxSizes()[1] - item.extractMinMaxSizes()[0]) / 2) + 1
-            totalPrice += Double(amount) * dblPrice * Double(amountInLineUp)
-        }
-        return "\(String(format: "%g", totalPrice))"
     }
     
     func checkCartIsEmpty() {
@@ -60,10 +59,5 @@ class CartVC: UIViewController {
         } else {
             emptyCartView.isHidden = true
         }
-    }
-    
-    func pushCustomerInfoVC() {
-        guard let customerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CustomerInfoVC.self)) as? CustomerInfoVC else {return}
-        self.navigationController?.pushViewController(customerVC, animated: true)
     }
 }

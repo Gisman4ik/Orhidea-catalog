@@ -12,6 +12,8 @@
 		9E044688264F28B600A28A0E /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E044686264F28B600A28A0E /* PriceCell.xib */; };
 		9E04468B264F2BCB00A28A0E /* AddToCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E044689264F2BCB00A28A0E /* AddToCartCell.swift */; };
 		9E04468C264F2BCB00A28A0E /* AddToCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E04468A264F2BCB00A28A0E /* AddToCartCell.xib */; };
+		9E1C517D267BE86400291405 /* OrderInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C517B267BE86400291405 /* OrderInfoCell.swift */; };
+		9E1C517E267BE86400291405 /* OrderInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1C517C267BE86400291405 /* OrderInfoCell.xib */; };
 		9E53E407265C0F9100141506 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53E406265C0F9100141506 /* RealmManager.swift */; };
 		9E55099426527C890060BDE0 /* SlideshowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55099326527C890060BDE0 /* SlideshowDelegate.swift */; };
 		9E60ED452662926B0037BDB5 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60ED442662926B0037BDB5 /* Delegates.swift */; };
@@ -73,6 +75,8 @@
 		9E044686264F28B600A28A0E /* PriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
 		9E044689264F2BCB00A28A0E /* AddToCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddToCartCell.swift; path = Catalog/ViewControllers/ItemDetails/Cells/AddToCart/AddToCartCell.swift; sourceTree = SOURCE_ROOT; };
 		9E04468A264F2BCB00A28A0E /* AddToCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddToCartCell.xib; path = Catalog/ViewControllers/ItemDetails/Cells/AddToCart/AddToCartCell.xib; sourceTree = SOURCE_ROOT; };
+		9E1C517B267BE86400291405 /* OrderInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoCell.swift; sourceTree = "<group>"; };
+		9E1C517C267BE86400291405 /* OrderInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderInfoCell.xib; sourceTree = "<group>"; };
 		9E53E406265C0F9100141506 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9E55099326527C890060BDE0 /* SlideshowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowDelegate.swift; sourceTree = "<group>"; };
 		9E60ED442662926B0037BDB5 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
@@ -166,6 +170,15 @@
 			path = Price;
 			sourceTree = "<group>";
 		};
+		9E1C5176267BE80900291405 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9E1C517B267BE86400291405 /* OrderInfoCell.swift */,
+				9E1C517C267BE86400291405 /* OrderInfoCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		9E55099226527C700060BDE0 /* DelegateProtocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +267,7 @@
 		9E71964B26760A7C0077F1F4 /* OrderInfoDetailsVC */ = {
 			isa = PBXGroup;
 			children = (
+				9E1C5176267BE80900291405 /* Cells */,
 				9E71964C26760A960077F1F4 /* OrderInfoDetailsVC.swift */,
 			);
 			path = OrderInfoDetailsVC;
@@ -579,6 +593,7 @@
 				9E9C18C5263DA6EE0010BF8C /* ArticleCell.xib in Resources */,
 				9E87DA082626450700369B70 /* LaunchScreen.storyboard in Resources */,
 				9EABCB3A2661358E00F187BD /* OrderButton.xib in Resources */,
+				9E1C517E267BE86400291405 /* OrderInfoCell.xib in Resources */,
 				9E87DA052626450700369B70 /* Assets.xcassets in Resources */,
 				9E044688264F28B600A28A0E /* PriceCell.xib in Resources */,
 				9E93AEAB26550991009FE280 /* ColorCell.xib in Resources */,
@@ -654,6 +669,7 @@
 				9EABCB282661345C00F187BD /* CartTableModel.swift in Sources */,
 				9E04468B264F2BCB00A28A0E /* AddToCartCell.swift in Sources */,
 				9E9C18D0263DA9E20010BF8C /* ItemImage.swift in Sources */,
+				9E1C517D267BE86400291405 /* OrderInfoCell.swift in Sources */,
 				9E9C1905263DF8AA0010BF8C /* Catalog.swift in Sources */,
 				9E71964D26760A960077F1F4 /* OrderInfoDetailsVC.swift in Sources */,
 				9EC199F226751BD900861363 /* CustomerInfoVC.swift in Sources */,

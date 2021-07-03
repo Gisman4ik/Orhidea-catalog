@@ -8,7 +8,7 @@
 import UIKit
 import TextFieldEffects
 
-class DeliveryInfoVC: UIViewController {
+class DeliveryInfoVC: UIViewController  {
     
     @IBOutlet weak var countryField: HoshiTextField!
     @IBOutlet weak var cityField: HoshiTextField!
@@ -18,13 +18,18 @@ class DeliveryInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         setupFields()
         setNavBarAppearance()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        countryField.becomeFirstResponder()
+    }
+    
     func setupFields() {
         let font = UIFont(name: "ArialMT", size: 18)
         countryField.font = font
@@ -79,20 +84,20 @@ class DeliveryInfoVC: UIViewController {
 
     func setNavBarAppearance() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Далее", style: .plain, target: self, action: #selector(nextBarButtonAction))
-        let backButton = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(backBarButtonAction))
-        //backButton.tintColor = UIColor.black
-        backButton.image = UIImage(systemName: "arrow.left")
-        navigationItem.leftBarButtonItem = backButton
-        self.navigationItem.titleView = setTitle(title: "Оформление заказа", titleColor: UIColor.black, titleSize: 16, subtitle: "Шаг 2 из 3", subtitleColor: UIColor.gray, subtitleSize: 12, view: self.view)
+        setNavBarWithSubTitle(step: "2")
     }
-
-    @objc func nextBarButtonAction() {
-        guard let orderInfoDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: OrderInfoDetailsVC.self)) as? OrderInfoDetailsVC else {return}
-        navigationController?.pushViewController(orderInfoDetailsVC, animated: true)
-    }
-
-    @objc func backBarButtonAction() {
-        navigationController?.popViewController(animated: true)
+    
+    @objc func nextBarButtonAction() {        guard let country = countryField.text, !country.isEmpty else {
+            countryField.borderActiveColor = .red
+            countryField.borderInactiveColor = .red
+            return
+        }
+        guard let city = cityField.text, !city.isEmpty else {
+                cityField.borderActiveColor = .red
+                cityField.borderInactiveColor = .red
+                return
+        }
+        pushViewController(controller: OrderInfoDetailsVC.self)
     }
 }
 
@@ -109,6 +114,9 @@ extension DeliveryInfoVC: UITextFieldDelegate {
         if textField == countryField {
             setCountryPicker()
         }
+        guard let textField = textField as? HoshiTextField else {return}
+        textField.borderActiveColor = UIColor(named: "CatalogBlueColor")
+        textField.borderInactiveColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
 }
 

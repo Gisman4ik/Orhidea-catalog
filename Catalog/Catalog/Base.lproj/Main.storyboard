@@ -495,7 +495,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация о заказе" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qq7-Ob-D3F">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация о заказе" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qq7-Ob-D3F">
                                 <rect key="frame" x="20" y="64" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -519,18 +519,33 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-iD-7LC">
+                                <rect key="frame" x="0.0" y="105" width="390" height="629"/>
+                                <color key="backgroundColor" name="CatalogWhiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="A52-jH-eLk" id="Sjj-ie-623"/>
+                                    <outlet property="delegate" destination="A52-jH-eLk" id="2rk-mr-q5l"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PaH-e7-wWE"/>
                         <color key="backgroundColor" name="CatalogWhiteColor"/>
                         <constraints>
                             <constraint firstItem="qq7-Ob-D3F" firstAttribute="top" secondItem="PaH-e7-wWE" secondAttribute="top" constant="20" id="1F7-yE-JAv"/>
+                            <constraint firstItem="FNg-iD-7LC" firstAttribute="top" secondItem="qq7-Ob-D3F" secondAttribute="bottom" constant="20" id="5P7-p5-cmw"/>
+                            <constraint firstItem="FNg-iD-7LC" firstAttribute="leading" secondItem="PaH-e7-wWE" secondAttribute="leading" id="8Fm-A8-NlN"/>
                             <constraint firstItem="PaH-e7-wWE" firstAttribute="trailing" secondItem="qq7-Ob-D3F" secondAttribute="trailing" constant="20" id="CAw-ps-QYe"/>
                             <constraint firstItem="qq7-Ob-D3F" firstAttribute="leading" secondItem="PaH-e7-wWE" secondAttribute="leading" constant="20" id="GAl-JS-DgN"/>
                             <constraint firstItem="9SD-28-jZp" firstAttribute="leading" secondItem="PaH-e7-wWE" secondAttribute="leading" constant="20" id="JM9-kS-Lh3"/>
+                            <constraint firstItem="9SD-28-jZp" firstAttribute="top" secondItem="FNg-iD-7LC" secondAttribute="bottom" id="Odg-QA-axG"/>
+                            <constraint firstItem="PaH-e7-wWE" firstAttribute="trailing" secondItem="FNg-iD-7LC" secondAttribute="trailing" id="Ova-RN-xeK"/>
                             <constraint firstItem="PaH-e7-wWE" firstAttribute="bottom" secondItem="9SD-28-jZp" secondAttribute="bottom" constant="20" id="mTs-YV-9N6"/>
                             <constraint firstItem="PaH-e7-wWE" firstAttribute="trailing" secondItem="9SD-28-jZp" secondAttribute="trailing" constant="20" id="ux6-sf-22q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="FNg-iD-7LC" id="wHX-ZW-o2j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mE-if-KbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,3 +12,5 @@ class CustomerInfo: Object {
     @objc dynamic var apartmentNum: String?
     @objc dynamic var postcode: String?
 }
+
+

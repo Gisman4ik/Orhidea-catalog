@@ -1,7 +1,7 @@
 import UIKit
 import ImageSlideshow
 
-class ItemDetails: UIViewController, UIGestureRecognizerDelegate {
+class ItemDetails: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favoriteButton: UIButton!

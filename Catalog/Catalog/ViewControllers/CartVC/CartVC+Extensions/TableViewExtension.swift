@@ -33,13 +33,15 @@ extension CartVC: UITableViewDataSource {
         case .priceOnTop:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PriceOnTop.self), for: indexPath)
             guard let priceOnTopCell = cell as? PriceOnTop else {return cell}
-            priceOnTopCell.setLabel(priceOnTop: calcTotalCartPrice())
+            priceOnTopCell.setLabel(priceOnTop: totalPrice)
             return priceOnTopCell
         case .orderBtn:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderButton.self), for: indexPath)
             guard let orderButtonCell = cell as? OrderButton else {return cell}
             orderButtonIndexPath = indexPath
-            orderButtonCell.action = pushCustomerInfoVC
+            orderButtonCell.action = {[weak self] in
+                self?.pushViewController(controller: CustomerInfoVC.self)
+            }
             return orderButtonCell
         case .itemInCart:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemInCart.self), for: indexPath)
@@ -51,7 +53,7 @@ extension CartVC: UITableViewDataSource {
         case .total:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: Total.self), for: indexPath)
             guard let totalCell = cell as? Total else {return cell}
-            totalCell.setLabel(totalPrice: calcTotalCartPrice())
+            totalCell.setLabel(totalPrice: totalPrice)
             return totalCell
         }
     }
@@ -62,10 +64,12 @@ extension CartVC: DeletableItem, Updatable {
         cartItems = DataManager.shared.cartProducts
         tableModel = CartTableModel.getCells()
         checkCartIsEmpty()
+        setFixedOrderBtnAppearance()
         tableView.reloadData()
     }
     
     func update() {
+        setFixedOrderBtnAppearance()
         tableView.reloadData()
     }
 }

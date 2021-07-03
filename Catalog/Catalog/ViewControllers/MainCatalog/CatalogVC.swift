@@ -101,7 +101,7 @@ extension CatalogVC: UISearchBarDelegate {
     }
 }
 
-extension CatalogVC: UIGestureRecognizerDelegate {
+extension CatalogVC {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if gestureRecognizer == self.closeKeyboardByTap && isOpenKeyboard{
             return true
